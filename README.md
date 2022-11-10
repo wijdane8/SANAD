@@ -40,4 +40,4 @@ healing - تعافي
 *   Specialists: create a group - write articles - give badges - create missions - start group chat - send messages to members - write a comment.
 *   manager\\s:confirmed Specialist - delete\\edit Specialist - delete\\edit member - delete group - delete comments.
 
-[**Website pages planing**](https://www.figma.com/file/m368hAQyI0DSAn5p9Pf5NX/final-project)
+[**WireFrame link **](https://www.figma.com/file/m368hAQyI0DSAn5p9Pf5NX/final-project)
