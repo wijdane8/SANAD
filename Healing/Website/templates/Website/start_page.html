@@ -1,0 +1,18 @@
+<!doctype html>
+{% load static%}
+<html lang="ar" dir="rtl">
+  <head >
+    <link rel="stylesheet" href="{% static 'style/start.css' %}">
+  </head>
+  <body><div class="container">
+    <p class="lead">Just my entry in yet another Codepen challenge.</p>
+    <div class="header-bar">
+        <h1 class="logo">E</h1>
+        <ul class="slider-menu">
+            <li><a href="{% url 'Website:home'%}">Home</a></li>
+            <li>About</li>
+            <li>Services</li>
+        </ul>
+    </div>
+</div>
+</body>
