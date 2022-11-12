@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -15,6 +16,7 @@ class Member(models.Model):
 
 
 class Specialist(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True,)
     specialist_name=models.CharField(max_length=1024)
     specialist_Specialization=models.CharField(max_length=1024)
     specialist_city=models.CharField(max_length=512)
@@ -32,6 +34,7 @@ class Specialist(models.Model):
 
 
 class Member_group(models.Model):
+    mamber = models.ForeignKey(Member, on_delete = models.CASCADE)
     group_name=models.CharField(max_length=1024)
     enter_counts=models.IntegerField()
     enter_total=models.IntegerField()
@@ -39,6 +42,7 @@ class Member_group(models.Model):
     missions_counts=models.IntegerField()
 
 class Group(models.Model):
+    specialist =models.ForeignKey(Specialist,on_delete=models.CASCADE)
     group_name=models.CharField(max_length=1024)
     member_number=models.IntegerField()
     start_date=models.DateTimeField()
@@ -48,12 +52,14 @@ class Group(models.Model):
 
 
 class Mission(models.Model):
+    mamber_group = models.ForeignKey(Member_group, on_delete = models.CASCADE)
     mission_name=models.CharField(max_length=1024)
     start_date=models.DateTimeField()
     end_date=models.DateTimeField()
     mission_check=models.IntegerField()
 
 class Post(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
 
     post_type_choices = models.TextChoices("Post Type", ["Article", "Story"])
 
@@ -69,6 +75,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
     post = models.ForeignKey(Post, on_delete = models.CASCADE)
     name = models.CharField(max_length=256)
     content = models.TextField()
