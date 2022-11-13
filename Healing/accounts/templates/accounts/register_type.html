@@ -1,0 +1,15 @@
+{% extends 'Website/base.html' %}
+
+
+{% block content %}
+<form action="{% url 'accounts:register_type' %}" method="POST" class="d-flex flex-column gap-2">
+    {% csrf_token %}
+
+<form action="/action_page.php" method="get">
+  <input type="radio" id="member" name="register_type" value="member"checked="checked">
+  <label for="member">تسجيل الأعضاء</label><br>
+  <input type="radio" id="specialist" name="register_type" value="specialist" >
+  <label for="specialist">تسجيل الأخصائيين</label><br>
+  <input type="submit" value="next">
+</form>
+{%endblock %}

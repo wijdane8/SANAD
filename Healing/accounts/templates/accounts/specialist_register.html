@@ -1,0 +1,67 @@
+{% extends 'Website/base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    <h1>تسجيل عضو جديد</h1>
+
+    <form action="{% url 'accounts:register_specialist' %}" method="POST" class="d-flex flex-column gap-2">
+       {% csrf_token %}
+        <h1 class="h3 mb-3 fw-normal"></h1>
+    
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+            <label for="floatingInput">اسم المستخدم</label>
+          </div>
+          <label  class="form-floating">الصورة الشخصية</label>
+        <input type="file" name="specialist_image" accept="image/*" class="form-control" />
+
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+            <label for="floatingInput">البريد الالكتروني</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="first_name">
+            <label for="floatingInput">الاسم الأول</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Last Name" name="last_name">
+            <label for="floatingInput">الأسم الأخير</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="specialization" name="specialist_specialization">
+            <label for="floatingInput">التخصص</label>
+          </div>
+          <label  class="form-floating">صورة المؤهل الدراسي</label>
+        <input type="file" name="specialist_specialization_image" accept="image/*" class="form-control" />
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="city" name="specialist_city">
+            <label for="floatingInput">المدينة</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" name="specialist_phone">
+            <label for="floatingInput">رقم الهاتف</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="specialist_personal_page" name="specialist_personal_page">
+            <label for="floatingInput">الصفحة الشخصية</label>
+          </div>
+
+
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+          <label for="floatingPassword">كلمة المرور</label>
+        </div>
+        
+    
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+       
+      </form>
+
+
+</div>
+
+{% endblock%}

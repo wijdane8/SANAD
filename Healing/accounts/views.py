@@ -1,19 +1,40 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
+from Website.models import Specialist,Member
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
-def register_user(request : HttpRequest):
+def register_specialist(request : HttpRequest):
 
     if request.method == "POST":
 
         new_user = User.objects.create_user(username=request.POST["username"], email= request.POST["email"], first_name=request.POST["first_name"], last_name=request.POST["last_name"], password=request.POST["password"])
         new_user.save()
+        new_specialist= Specialist(user=request.user,specialist_specialization=request.POST["specialist_specialization"],specialist_image=request.FILES["specialist_image"],specialist_specialization_image=request.FILES["specialist_specialization_image"],specialist_city=request.POST["specialist_city"],specialist_phone=request.POST["specialist_phone"],specialist_personal_page=request.POST["specialist_personal_page"])
+        new_specialist.save()
+    return render(request, "accounts/specialist_register.html")
+def register_member(request : HttpRequest):
 
-    return render(request, "accounts/register.html")
+    if request.method == "POST":
 
+        new_user = User.objects.create_user(username=request.POST["username"], email= request.POST["email"], first_name=request.POST["first_name"], last_name=request.POST["last_name"], password=request.POST["password"])
+        new_member= Member(user=request.user,member_age=request.POST["member_age"],member_image=request.FILES["member_image"],member_city=request.POST["member_city"])
+        new_user.save()
+        new_member.save()
+    return render(request, "accounts/member_register.html")
+
+def register_type(request : HttpRequest):
+
+    if request.method == "POST":
+        if request.POST["register_type"]=="specialist":
+            return render(request, "accounts/specialist_register.html")
+        else:
+             request.POST["register_type"]=="member"
+        return render(request, "accounts/member_register.html")
+       
+    return render(request, "accounts/register_type.html")
 
 def login_user(request : HttpRequest):
     msg = ""

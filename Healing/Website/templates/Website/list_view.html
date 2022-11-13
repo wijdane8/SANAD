@@ -1,0 +1,56 @@
+{% extends 'Website/base.html' %}
+
+
+{% block content %}
+
+<h1>Posts List</h1>
+
+{% if "search"  in  request.GET %}
+    <h2> Search results for "{{ request.GET.search }}": </h2>
+{% endif %}
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+            {%if groups%}
+            {% for group in groups %}
+            <tr>
+                <th scope="row"><a href="{% url 'Website:group_detail' group.id %}">{{ group.group_name }}</a></th>
+                <td>{{ group.start_date }}</td>
+                <td>{{ group.created_by }}</td>
+                <td>
+
+                    <div class="button">
+                        <button class="btn btn-primary" href="{% url 'Website:home' group.id %}" type="button" >
+                          انضمام
+                        </button>
+                      </div>
+
+                </td>
+            </tr>
+            {% endfor %}
+            {%elif spiecialists%}
+            {% for spiecialist in spiecialists %}
+            <tr>
+                <th scope="row"><a href="{% url 'Website:group_detail' group.id %}">{{ spiecialist.user.username }}</a></th>
+                <td>{{ spiecialist.specialist_specialization }}</td>
+                <td>{{ spiecialist.specialist_rate }}</td>
+                <td>{{spiecialist.specialist_personal_page }}</td>
+            </tr>
+            {% endfor %}
+            {%else%}
+            لا توجد بيانات لعرضها
+            {%endif%}
+
+        </tbody>
+    </table>
+</div>
+{%endblock%}

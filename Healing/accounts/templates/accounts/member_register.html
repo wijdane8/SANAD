@@ -1,0 +1,55 @@
+{% extends 'Website/base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    <h1>تسجيل عضو جديد</h1>
+
+    <form action="{% url 'accounts:register_member' %}" method="POST" class="d-flex flex-column gap-2">
+       {% csrf_token %}
+        <h1 class="h3 mb-3 fw-normal"></h1>
+    
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+            <label for="floatingInput">اسم المستخدم</label>
+          </div>
+          <label  class="form-floating">الصورة الشخصية</label>
+        <input type="file" name="member_image" accept="image/*" class="form-control" />
+
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+            <label for="floatingInput">البريد الالكتروني</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="first_name">
+            <label for="floatingInput">الاسم الأول</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Last Name" name="last_name">
+            <label for="floatingInput">الأسم الأخير</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="age" name="member_age">
+            <label for="floatingInput">العمر</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="city" name="member_city">
+            <label for="floatingInput">المدينة</label>
+          </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+          <label for="floatingPassword">كلمة المرور</label>
+        </div>
+        
+    
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+       
+      </form>
+
+
+</div>
+
+{% endblock%}
