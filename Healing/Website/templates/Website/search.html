@@ -1,0 +1,36 @@
+{% extends 'Website/base.html' %}
+
+
+{% block content %}
+{% if "search"  in  request.GET %}
+    <h2> Search results for "{{ request.GET.search }}": </h2>
+{%else%}
+<p> لا توجد نتائج بحث </p>
+{% endif %}
+    {%if names%}
+            {% for name in names %}
+            <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">اسم الاخصائي</th>
+                        <th scope="col">التخصص</th>
+                        <th scope="col">التقييم</th>
+                        <th scope="col">الصفحة الشخصية</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <th scope="row"><a href="">{{ name.specialist_name }}</a></th>
+                <td>{{ name.specialist_specialization }}</td>
+                <td>{{ name.specialist_rate }}</td>
+                <td><a href="{{ name.specialist_personal_page }}">اضغط هنا</a></td>
+            </tr>
+            {% endfor %}
+            {%endif%}
+
+        </tbody>
+        </table>
+        </div>
+
+{%endblock%}

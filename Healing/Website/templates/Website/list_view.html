@@ -9,19 +9,19 @@
     <h2> Search results for "{{ request.GET.search }}": </h2>
 {% endif %}
 
-<div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-            {%if groups%}
-            {% for group in groups %}
+    {%if groups%}
+    {% for group in groups %}
+        <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
             <tr>
                 <th scope="row"><a href="{% url 'Website:group_detail' group.id %}">{{ group.group_name }}</a></th>
                 <td>{{ group.start_date }}</td>
@@ -37,13 +37,24 @@
                 </td>
             </tr>
             {% endfor %}
-            {%elif spiecialists%}
-            {% for spiecialist in spiecialists %}
+            {%elif names%}
+            {% for name in names %}
+            <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">اسم الاخصائي</th>
+                        <th scope="col">التخصص</th>
+                        <th scope="col">التقييم</th>
+                        <th scope="col">الصفحة الشخصية</th>
+                    </tr>
+                    </thead>
+                    <tbody>
             <tr>
-                <th scope="row"><a href="{% url 'Website:group_detail' group.id %}">{{ spiecialist.user.username }}</a></th>
-                <td>{{ spiecialist.specialist_specialization }}</td>
-                <td>{{ spiecialist.specialist_rate }}</td>
-                <td>{{spiecialist.specialist_personal_page }}</td>
+                <th scope="row"><a href="">{{ name.specialist_name }}</a></th>
+                <td>{{ name.specialist_specialization }}</td>
+                <td>{{ name.specialist_rate }}</td>
+                <td><a href="{{ name.specialist_personal_page }}">اضغط هنا</a></td>
             </tr>
             {% endfor %}
             {%else%}

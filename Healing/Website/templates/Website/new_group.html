@@ -1,0 +1,52 @@
+{% extends 'Website/base.html' %}
+
+{% block title %} create new group {% endblock %}
+
+{% block content %}
+    <h1>create new group</h1>
+
+    <form action="" method="POST" >
+        {% csrf_token %}
+        <div class="mb-3">
+            <label  class="form-label">اسم المجموعة</label>
+            <input type="text" class="form-control" name="group_name">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">معلومات المجموعة</label>
+            <textarea type="text" class="form-control" name="group_info">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">عدد الأعضاء</label>
+            <select name="member_number">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6 selected>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+                </select>
+            <input type="text" class="form-control" name="member_number"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">تاريخ البدء</label>
+            <input type="datetime-local" class="form-control" name="start_date" />
+        </div>
+
+
+        <div class="mb-3">
+            <label  class="form-label">تاريخ الانتهاء</label>
+            <input type="datetime-local" class="form-control" name="end_date" />
+        </div>
+        
+        </div>
+
+        
+        <input class="btn btn-primary" type="submit" value="مجموعة جديدة" />
+    </form>
+{% endblock %}

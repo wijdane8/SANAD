@@ -6,7 +6,7 @@
 <div class="container">
     <h1>تسجيل عضو جديد</h1>
 
-    <form action="{% url 'accounts:register_specialist' %}" method="POST" class="d-flex flex-column gap-2">
+    <form action="{% url 'accounts:register_specialist' %}" method="POST" class="d-flex flex-column gap-2" enctype="multipart/form-data">
        {% csrf_token %}
         <h1 class="h3 mb-3 fw-normal"></h1>
     
@@ -36,7 +36,7 @@
             <label for="floatingInput">التخصص</label>
           </div>
           <label  class="form-floating">صورة المؤهل الدراسي</label>
-        <input type="file" name="specialist_specialization_image" accept="image/*" class="form-control" />
+        <input type="file" name="specialist_specialization_image" accept="file/.pdf" class="form-control" />
           <div class="form-floating">
             <input type="text" class="form-control" id="floatingInput" placeholder="city" name="specialist_city">
             <label for="floatingInput">المدينة</label>

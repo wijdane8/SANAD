@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
 from accounts.models import Specialist,Member
 from django.contrib.auth.models import User
@@ -7,14 +7,38 @@ from django.contrib.auth.models import User
 def home(request:HttpRequest):
 
     return render(request,"Website/index.html")
-def spiecilest_list(request:HttpRequest):
+def search(request:HttpRequest):
     if "search" in request.GET:
-        spiecilests= User.objects.all( Specialist.objects.filter(title__contains = "search"))
+        try:
+            names= Specialist.objects.filter(specialist_name__contains ='search')
+        except:
+            msg="لاتوجد نتائج بحث"
+            return render(request,"Website/notfound.html",{"msg" : msg})
     else:
-        spiecilests = Specialist.objects.all()
+        names = Specialist.objects.all()
 
+    return render(request,"Website/search.html",{"names":names})
+
+
+def spiecilest_list(request:HttpRequest):
+    try:
+        names = Specialist.objects.all()
+    except:
+        msg="لاتوجد نتائج بحث"
+        return render(request,"Website/notfound.html",{"msg" : msg})
     
-    #posts = Post.objects.all().order_by("-publish_date") #to order by date
-    #posts = Post.objects.filter(is_published=False) #to filter by exact
-    #posts = Post.objects.filter(title__contains = "aims") #to filter using postfix __contains
-    return render(request,"Website/list_view.html",{"spiecilests":spiecilests})
+
+    return render(request,"Website/list_view.html",{"names":names})
+def spiecialist_check(request:HttpRequest):
+    user : User = request.user
+    if user.is_authenticated:
+        try:
+            name = user.Specialist.specialist_name
+        except:
+            msg="وصول غير مصرح به."
+        return render(request,"Website/notfound.html",{"msg" : msg})
+
+        
+@spiecialist_check(login_url="/Website/home")
+def create_group(request:HttpRequest):
+    pass

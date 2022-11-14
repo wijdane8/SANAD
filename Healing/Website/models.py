@@ -8,6 +8,7 @@ class Group(models.Model):
     specialist =models.ForeignKey(Specialist,on_delete=models.CASCADE,default='')
     member= models.ManyToManyField(Member)
     group_name=models.CharField(max_length=1024)
+    group_info=models.TextField()
     member_number=models.IntegerField( default=0)
     start_date=models.DateTimeField()
     end_date=models.DateTimeField()
