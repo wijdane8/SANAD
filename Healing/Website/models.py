@@ -16,13 +16,17 @@ class Group(models.Model):
     missions_total=models.IntegerField(default=0)
     complete_mission=models.IntegerField(default=0)
     is_active=models.BooleanField()
+    chat_url=models.URLField(default="")
+
+
 
 class Mission(models.Model):
     group = models.ForeignKey(Group, on_delete = models.CASCADE,default='')
+    member= models.ManyToManyField(Member)
     mission_name=models.CharField(max_length=1024)
     start_date=models.DateTimeField()
     end_date=models.DateTimeField()
-    mission_check=models.IntegerField(default=0)
+    mission_check=models.BooleanField(default=0)
 
 
 class Post(models.Model):

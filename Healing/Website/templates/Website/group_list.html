@@ -34,8 +34,12 @@
             <p class="card-text">{{group.group_info}}</p>
           </div>
           <div class="card-footer" style="background: inherit; border-color: inherit;">
-            <a href="#" class="btn btn-primary">انضمام</a>
-            <a href="#" class="btn btn-outline-primary">للتفاصيل</a>
+            {% if perms.Website.add_mission %}
+            <a href="{% url 'Website:join_group' group.id%}" class="btn btn-primary">انشاء مهمة</a>
+            {%else%}
+            <a href="{% url 'Website:join_group' group.id %}" class="btn btn-primary">انضمام</a>
+            {%endif%}
+            <a  href="{% url 'Website:group_detail' group.id %}" class="btn btn-outline-primary">للتفاصيل</a>
           </div>
         </div>
         <!-- Copy until here -->

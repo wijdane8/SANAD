@@ -29,6 +29,8 @@ def register_member(request : HttpRequest):
         name=new_user.username
         new_member= Member(user=new_user,member_name=name,member_age=request.POST["member_age"],member_city=request.POST["member_city"])
         new_member.save()
+        group = Group.objects.get(name="members")
+        new_user.groups.add(group)
         
     return render(request, "accounts/member_register.html")
 

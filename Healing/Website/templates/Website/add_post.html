@@ -33,14 +33,11 @@
                 <option value="False">لا</option>
             </select>
         </div>
-
-
         <div class="mb-3">
-            <label class="form-lable">Post Type:</label>
-            <select class="form-control" name="post_type">
-                {% for choice in Post.post_type_choices.choices %}
-                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-                {% endfor %}
+            <label class="form-label">نوع الموضوع</label>
+            <select class="form-select" name="post_type">
+                <option value="Article">مقال</option>
+                <option value="Story ">قصة الهام</option>
             </select>
         </div>
         

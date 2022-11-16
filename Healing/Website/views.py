@@ -7,11 +7,9 @@ from django.contrib.auth import authenticate, login, logout
 from Website.models import Group,Post,Mission,Comment
 # Create your views here.
 
+
 def home(request:HttpRequest):
-    if request.user.groups.filter(name='specialists').exists():
-        return render(request,"Website/start_page.html")
-    else:
-        return render(request,"Website/base.html")
+    return render(request,"Website/base.html")
 
 @login_required(login_url="/account/login/")
 def my_group_list(request:HttpRequest):
@@ -21,9 +19,22 @@ def my_group_list(request:HttpRequest):
     return render(request,"Website/group_list.html",{"groups":groups})
 
 def group_list(request:HttpRequest):
-    groups=Group.objects.all()
+    if "search" in request.GET:
+        groups = Group.objects.filter(group_name__contains=request.GET["search"])
+    else:
+        groups=Group.objects.all()
     
     return render(request,"Website/group_list.html",{"groups":groups})
+
+def join_group(request:HttpRequest,group_id:int):
+    user=request.user
+    group=Group.objects.get(id=group_id)
+    group.member_number=group.member_number-1
+    group.member.add(user.id)
+    # permission = Permission.objects.create(name='can view '+group.group_name)
+    # user.user_permissions.add(permission)
+    
+    return render(request, "Website/group_details.html", {"group" : group})
 
 
 
@@ -38,16 +49,12 @@ def new_group(request:HttpRequest):
     return render(request,"Website/new_group.html")
 
 def search(request:HttpRequest):
-    if "search" in request.GET:
-        try:
-            names= Specialist.objects.filter(specialist_name__contains ='search')
-        except:
-            msg="لاتوجد نتائج بحث"
-            return render(request,"Website/notfound.html",{"msg" : msg})
+    search=request.Post["search"]
+    if Group.objects.filter(group_name__contains =search):
+        names= Group.objects.filter(group_name__contains =search)
     else:
-        names = Specialist.objects.all()
-
-    return render(request,"Website/search.html",{"names":names})
+        names = Group.objects.all()
+    return render(request,"Website/group_list.html",{"names":names})
 
 
 def spiecilest_list(request:HttpRequest):
@@ -60,18 +67,63 @@ def spiecilest_list(request:HttpRequest):
 
     return render(request,"Website/list_view.html",{"names":names})
 
+def members_list(request:HttpRequest):
+    try:
+        names = Member.objects.all()
+    except:
+        msg="لاتوجد نتائج بحث"
+        return render(request,"Website/notfound.html",{"msg" : msg})
+    
+
+    return render(request,"Website/list_view.html",{"names":names})
+    
+def my_groups(request : HttpRequest , specialist_id : int):
+    groups=Group.objects.filter(specialist_id=specialist_id)
+    return render(request,"Website/group_list.html",{"groups":groups})
+
+
+@login_required(login_url="/account/login/")
+def group_detail(request : HttpRequest, group_id : int):
+    
+    try:
+        group = Group.objects.get(id=group_id)
+        is_member = group.member.filter(user=request.user.id).exists()
+ 
+        missions=Mission.objects.filter(group_id=group_id)
+        if request.method == "POST":
+            group.chat_url=request.POST["chat_url"]
+            group.save()
+            return redirect("Website:group_list")
+    except:
+        return render(request , "Website/notfound.html")
+
+    return render(request, "Website/group_details.html", {"group" : group,"missions":missions, "is_member" : is_member})
+
+
+def specialist_detail(request : HttpRequest, spcialist_id : int):
+
+    try:
+        specialist = Specialist.objects.get(pk=spcialist_id)
+    except:
+        return render(request , "Website/notfound.html")
+
+    return render(request, "Website/specialist_detail.html", {"specialist" : specialist})
 
 
 
-def new_mission(request:HttpRequest,group_id:int):
-        try:
-            group=Group.objects.get(id=group_id)
-            
-        except:
-            msg="وصول غير مصرح به."
-            return render(request,"Website/notfound.html",{"msg" : msg})
-        return render(request,"Website/list_view.html",{"group":group})
-        
+def new_mission(request:HttpRequest):
+    groups=Group.objects.filter(specialist_id=request.user.id)
+
+    try:
+        new_mission=Mission(group=Group.objects.get(request.POST["id"]),mission_name=request.POST["mission_name"],start_date=request.POST["start_date"],end_date=request.POST["end_date"])
+        new_mission.save()
+    except:
+        msg="لايمكن انشاء المهمة."
+        return render(request,"Website/notfound.html",{"msg" : msg})
+    return render(request,"Website/new_mission.html",{"groups":groups})
+
+
+
 
 def create_group(request:HttpRequest):
     user =request.user
@@ -88,19 +140,13 @@ def create_group(request:HttpRequest):
 #post
 def add_post(request : HttpRequest):
     user : User = request.user
-
-    
+   
     if user.is_authenticated:
-        age = user.profile.age
-        print(age)
-
-    if not (user.is_authenticated and user.has_perm("Website.add_post")):
+        if request.method == "POST":
+            new_post = Post(user = request.user, title=request.POST["title"], content = request.POST["content"], publish_date=request.POST["publish_date"], is_published = request.POST["is_published"], post_type=request.POST["post_type"] , image=request.FILES["image"])
+            new_post.save()
+    else:
         return redirect("accounts:login_user")
-
-    if request.method == "POST":
-        new_post = Post(user = request.user, title=request.POST["title"], content = request.POST["content"], publish_date=request.POST["publish_date"], is_published = request.POST["is_published"], post_type=request.POST["post_type"] , image=request.FILES["image"])
-        new_post.save()
-
 
     return render(request, "Website/add_post.html", {"Post" : Post})
     
@@ -108,14 +154,20 @@ def list_posts(request: HttpRequest):
     
     
     if "search" in request.GET:
-        posts =post.objects.filter(title__contains=request.GET["search"])
+        posts =Post.objects.filter(title__contains=request.GET["search"])
     else:
-        posts = Post.objects.all()
+        posts = Post.objects.filter(post_type="Story")
 
+    return render(request, "Website/view_posts.html", {"posts" : posts})
+
+def list_posts_artical(request: HttpRequest):
     
-    #posts = Post.objects.all().order_by("-publish_date") #to order by date
-    #posts = Post.objects.filter(is_published=False) #to filter by exact
-    #posts = Post.objects.filter(title__contains = "aims") #to filter using postfix __contains
+    
+    if "search" in request.GET:
+        posts =Post.objects.filter(title__contains=request.GET["search"])
+    else:
+        posts = Post.objects.filter(post_type="Artical")
+
     return render(request, "Website/view_posts.html", {"posts" : posts})
 
 
@@ -126,46 +178,9 @@ def post_detail(request : HttpRequest, post_id : int):
         post = Post.objects.get(id=post_id)
         comments = Comment.objects.filter(post = post)
     except:
-        return render(request , "Website/not_found.html")
+        return render(request , "Website/notfound.html")
 
     return render(request, "Website/post_detail.html", {"post" : post, "comments" : comments})
-
-
-#update post
-#if you want to use a decorator to check for login
-@login_required(login_url="/account/login/")
-def update_post(request: HttpRequest, post_id:int):
-
-    try:
-        post = Post.objects.get(id=post_id)
-    except:
-        return render(request , "Website/not_found.html")
-
-    if request.method == "POST":
-        post.title = request.POST["title"]
-        post.content = request.POST["content"]
-        post.publish_date = request.POST["publish_date"]
-        post.is_published = request.POST["is_published"]
-        post.save()
-
-        return redirect("Website:list_posts")
-
-    post.publish_date = post.publish_date.isoformat("T", "hours").replace("+", ":")
-    return render(request, "Website/update_post.html", {"post" : post})
-
-
-#delete post
-def delete_post(request: HttpRequest, post_id:int):
-
-    try:
-        post = Post.objects.get(id=post_id)
-    except:
-        return render(request , "Website/not_found.html")
-
-    post.delete()
-
-    return redirect("Website:list_posts")
-
 
 
 

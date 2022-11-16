@@ -1,0 +1,22 @@
+{% extends 'Website/base.html' %}
+
+
+{% block title %} {{ specialist.specialist_name }} {% endblock %}
+
+
+{% block content %}
+<h1>{{ specialist.specialist_name }}</h1>
+<div class="container">
+    <p>{{ specialist.specialist_specialization }}, التقييم{{ specialist.specialist_rate }}</p>
+    <img src="{{ specialist.specialist_image.url }}"  class="w-100"/>
+    <div>
+        {{ specialist.specialist_information }}
+    </div>
+    <h5>الصفحة الشخصية</h5>
+    <a href="{{ specialist.specialist_personal_page }}">اضغط هنا</a>
+</div>
+
+<hr/>
+
+
+{% endblock %}

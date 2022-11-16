@@ -1,17 +1,46 @@
-{%block title%} {{group_name}}{%endblock%}
+{% extends 'Website/base.html' %}
+{% load static%}
+
+{%block title%} {{group.group_name}}{%endblock%}
 
 {%block content%}
 
-<h1>{{group_name}}</h1><br>
-<p>{{group_info}}</p><br>
+<h2>{{group.group_name}}</h2><br>
+<h2>معلومات المجموعة</h2>
+<p>{{group.group_info}}</p><br>
 <hr>
 <h3>اسم الأخصائي</h3><br>
-<h4>{{spiecilest_name}}</h4>
-<div class="button">
-    <button class="btn btn-primary" href="{% url 'Website:home' group.id %}" type="button" >
-      انضمام
-    </button>
-  </div>
+<p>{{group.created_by}}</p>
+<a href="{{group.chat_url}}">لدخول المحادثة</a>
+<h3>عدد الاعضاء</h3><br>
+<p>{{group.member_number}}</p>
+<h3>تاريخ البداية</h3><br>
+<p>{{group.start_date}}</p>
+<h3>تاريخ النهاية</h3><br>
+<p>{{group.end_date}}</p>
 
+{% if perms.Website.add_mission %}
+<form class="form" method="POST">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label  class="form-label">تحديث رابط مجموعة المحادثة:</label>
+    <input type="url" class="form-control" name="chat_url" placeholder="{{group.chat_url}}">
+</div>
+<input class="btn btn-primary" type="submit" value="حفظ الرابط" />
+
+</form>
+{%elif is_member %}
+<h3>المهمات </h3><br>
+{%for group in group.mission %}
+<p>{{group.member_number}}</p>
+{% endfor %}
+{%else%}
+<div class="button">
+  <button class="btn btn-primary" href="{% url 'Website:join_group' group.id %}" type="button" action="">
+    انضمام
+  </button>
+
+</div>
+{%endif%}
 
 {%endblock%}

@@ -1,128 +1,53 @@
+
 {% extends 'Website/base.html' %}
 {% load static%}
-{%block content%}
-<style>
-    body {
-    font-family: 'Lato', sans-serif;
-}
+{%block content%}{%block specialist%}
+<!DOCTYPE html>
+<html lang="en">
 
-h1 {
-    margin-bottom: 40px;
-}
-
-label {
-    color: #333;
-}
-
-.btn-send {
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    width: 80%;
-    margin-left: 3px;
-    }
-.help-block.with-errors {
-    color: #ff5050;
-    margin-top: 5px;
-
-}
-
-.card{
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-</style>
-<div class="container">]
-    <div class=" text-center mt-5 ">
-
-        <h1 >Bootstrap Contact Form</h1>
-            
-        
-    </div>
+<head>
+  <link rel="stylesheet" href="{% static 'style/cards.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+  <title>Custom Bootstrap 4 card</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
 
-<div class="row ">
-  <div class="col-lg-7 mx-auto">
-    <div class="card mt-2 mx-auto p-4 bg-light">
-        <div class="card-body bg-light">
-   
-        <div class = "container">
-                         <form id="contact-form" role="form">
+<body>
+  {%for group in groups%}
+  <div class="container">
+    <div class="row pt-5 m-auto">
+      <div class="col-md-6 col-lg-4 pb-3">
 
-        
-
-        <div class="controls">
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="form_name">اسم المجموعة*</label>
-                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
-                        
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="form_lastname">Lastname *</label>
-                        <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
-                                                        </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="form_email">Email *</label>
-                        <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
-                        
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="form_need">Please specify your need *</label>
-                        <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
-                            <option value="" selected disabled>--Select Your Issue--</option>
-                            <option >Request Invoice for order</option>
-                            <option >Request order status</option>
-                            <option >Haven't received cashback yet</option>
-                            <option >Other</option>
-                        </select>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="form_message">Message *</label>
-                        <textarea id="form_message" name="message" class="form-control" placeholder="Write your message here." rows="4" required="required" data-error="Please, leave us a message."></textarea
-                            >
-                        </div>
-
-                    </div>
-
-
-                <div class="col-md-12">
-                    
-                    <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
-                        " value="Send Message" >
-                
-            </div>
-      
-            </div>
-
-
-    </div>
-     </form>
-    </div>
+        <!-- Copy the content below until next comment -->
+        <div class="card card-custom bg-white border-white border-0">
+          <div class="card-custom-img" style="background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" src="{% static 'imgs/group_avatar.jpg' %}" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">{{group.group_name}}<br>
+            </h4>
+            <p class="card-text">{{group.group_info}}</p>
+          </div>
+          <div class="card-footer" style="background: inherit; border-color: inherit;">
+            <a href="#" class="btn btn-primary">انضمام</a>
+            <a href="#" class="btn btn-outline-primary">للتفاصيل</a>
+          </div>
         </div>
+        <!-- Copy until here -->
 
+      </div>
+      
+    </div>
+  </div>
+  {%endfor%}
 
-</div>
-    <!-- /.8 -->
+</body>
 
-</div>
-<!-- /.row-->
-
-</div>
-</div>
+</html>{%endblock%}
+{%endblock%}

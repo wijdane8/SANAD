@@ -51,7 +51,7 @@
                     </thead>
                     <tbody>{% for name in names %}
             <tr>
-                <th scope="row"><a href="">{{ name.specialist_name }}</a></th>
+                <th scope="row"><a href="{% url 'Website:specialist_detail' name.user.id %}">{{ name.specialist_name }}</a></th>
                 <td>{{ name.specialist_specialization }}</td>
                 <td>{{ name.specialist_rate }}</td>
                 <td><a href="{{ name.specialist_personal_page }}">اضغط هنا</a></td>
