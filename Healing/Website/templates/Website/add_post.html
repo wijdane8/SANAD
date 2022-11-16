@@ -1,0 +1,49 @@
+{% extends 'Website/base.html' %}
+
+{% block title %} المقالات {% endblock %}
+
+{% block content %}
+    <h1> المقالات </h1>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label  class="form-label">العنوان</label>
+            <input type="text" class="form-control" name="title">
+        </div>
+
+        <label  class="form-label">الصورة</label>
+        <input type="file" name="image" accept="image/*" class="form-control" />
+
+        <div class="mb-3">
+            <label  class="form-label">المحتوى</label>
+            <textarea type="text" class="form-control" name="content"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">تاريخ النشر</label>
+            <input type="datetime-local" class="form-control" name="publish_date" />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">جاهز للنشر؟ </label>
+            <select class="form-select" name="is_published">
+                <option value="True">نعم</option>
+                <option value="False">لا</option>
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-lable">Post Type:</label>
+            <select class="form-control" name="post_type">
+                {% for choice in Post.post_type_choices.choices %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Creat Post" />
+    </form>
+{% endblock %}

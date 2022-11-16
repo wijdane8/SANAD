@@ -1,0 +1,53 @@
+{% extends 'Website/base.html' %}
+
+{% block title %} المواضيع {% endblock %}
+
+
+
+
+{% block content %}
+
+<h1>قائمة المواضيع</h1>
+
+{% if "search"  in  request.GET %}
+    <h2> نتائج البحث لـ "{{ request.GET.search }}": </h2>
+{% endif %}
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">العنوان</th>
+            <th scope="col">تاريخ النشر</th>
+            <th scope="col">تم النشر</th>
+            <th scope="col">تعديل</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <th scope="row"><a href="{% url 'Website:post_detail' post.id %}">{{ post.title }}</a></th>
+                <td>{{ post.publish_date }}</td>
+                <td>{{ post.is_published }}</td>
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          تعديل
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'Website:update_post' post.id %}">تحديث</a></li>
+                          <li><a class="dropdown-item" href="{% url 'Website:delete_post' post.id %}">حذف</a></li>
+                        </ul>
+                      </div>
+
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

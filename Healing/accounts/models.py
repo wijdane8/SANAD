@@ -11,7 +11,10 @@ class Specialist(models.Model):
     specialist_image=models.ImageField(upload_to="images/",default= '/media/images/OIP.jpeg')
     specialist_personal_page=models.URLField(default="")
     specialist_rate=models.FloatField(default=5)
+    specialist_information=models.TextField()
     specialist_confirmation=models.BooleanField(default=False)
+    type=models.CharField(max_length=512,default='specialist')
+
 
 class Member(models.Model):
     
@@ -19,4 +22,4 @@ class Member(models.Model):
     member_name=models.CharField(max_length=1024)
     member_age=models.IntegerField(default='')
     member_city=models.CharField(max_length=1024,default='')
-    member_image= models.ImageField(upload_to="images/",default= '/media/images/OIP.jpeg')
+    type=models.CharField(max_length=512)

@@ -2,14 +2,13 @@
 
 
 {% block content %}
-<form action="{% url 'accounts:register_type' %}" method="POST" class="d-flex flex-column gap-2">
+<div class="container">
+<form action="{% url 'accounts:register_type' %}" method="POST" class="d-flex flex-column">
     {% csrf_token %}
 
 <form action="/action_page.php" method="get">
-  <input type="radio" id="member" name="register_type" value="member"checked="checked">
-  <label for="member">تسجيل الأعضاء</label><br>
-  <input type="radio" id="specialist" name="register_type" value="specialist" >
-  <label for="specialist">تسجيل الأخصائيين</label><br>
+  <input type="radio" id="member" name="register_type" value="member"checked="checked"> <label for="member" style="color:#212121 ;align-content: center;">تسجيل الأعضاء</label>
+  <input type="radio" id="specialist" name="register_type" value="specialist" > <label for="specialist" style="color:#212121 ;align-content: center;">تسجيل الأخصائيين</label>
   <input type="submit" value="next">
-</form>
+</form></div>
 {%endblock %}

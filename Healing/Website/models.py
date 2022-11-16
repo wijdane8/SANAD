@@ -15,6 +15,7 @@ class Group(models.Model):
     created_by=models.CharField(max_length=1024)
     missions_total=models.IntegerField(default=0)
     complete_mission=models.IntegerField(default=0)
+    is_active=models.BooleanField()
 
 class Mission(models.Model):
     group = models.ForeignKey(Group, on_delete = models.CASCADE,default='')
@@ -23,15 +24,20 @@ class Mission(models.Model):
     end_date=models.DateTimeField()
     mission_check=models.IntegerField(default=0)
 
+
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    post_type_choices = models.TextChoices("Post Type", ["Article", "Story"])
+
+    post_type_choices = models.TextChoices("Post Type", ["Article", "story"])
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=1024)
     content = models.TextField()
-    publish_date = models.DateTimeField(auto_now=True)
+    publish_date = models.DateTimeField()
     image = models.ImageField(upload_to="images/")
     is_published = models.BooleanField()
     post_type  = models.CharField(max_length=64, choices = post_type_choices.choices, default=post_type_choices.Article)
+
+    def __str__(self) -> str:
+        return f"{self.title}, {self.publish_date}"
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete = models.CASCADE)

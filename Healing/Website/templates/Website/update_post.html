@@ -1,0 +1,36 @@
+{% extends 'Website/base.html' %}
+
+{% block title %} Update Post {% endblock %}
+
+{% block content %}
+    <h1>تحديث الموضوع {{ post.title }}</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label  class="form-label">العنوان</label>
+            <input type="text" class="form-control" name="title" value="{{ post.title }}">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">المحتوى</label>
+            <textarea type="text" class="form-control" name="content">{{ post.content }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">تاريخ النشر</label>
+            <input type="datetime-local" class="form-control" name="publish_date" value="{{ post.publish_date }}" />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">جاهز للنشر؟</label>
+            <select class="form-select" name="is_published" value="{{ post.is_published }}">
+                <option value="True">نعم</option>
+                <option value="False">لا</option>
+            </select>
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Update Post" />
+    </form>
+{% endblock %}

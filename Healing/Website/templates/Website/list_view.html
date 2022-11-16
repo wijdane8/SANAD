@@ -3,14 +3,13 @@
 
 {% block content %}
 
-<h1>Posts List</h1>
+
 
 {% if "search"  in  request.GET %}
     <h2> Search results for "{{ request.GET.search }}": </h2>
 {% endif %}
 
     {%if groups%}
-    {% for group in groups %}
         <div class="container">
                 <table class="table">
                     <thead>
@@ -22,6 +21,7 @@
                     </tr>
                     </thead>
                     <tbody>
+    {% for group in groups %}
             <tr>
                 <th scope="row"><a href="{% url 'Website:group_detail' group.id %}">{{ group.group_name }}</a></th>
                 <td>{{ group.start_date }}</td>
@@ -35,10 +35,10 @@
                       </div>
 
                 </td>
-            </tr>
+            </tr></div>
             {% endfor %}
             {%elif names%}
-            {% for name in names %}
+            <h3 style="text-align:center ;color: rgb(48, 92, 117);">قائمة الأخصائيين</h3>
             <div class="container">
                 <table class="table">
                     <thead>
@@ -49,7 +49,7 @@
                         <th scope="col">الصفحة الشخصية</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody>{% for name in names %}
             <tr>
                 <th scope="row"><a href="">{{ name.specialist_name }}</a></th>
                 <td>{{ name.specialist_specialization }}</td>

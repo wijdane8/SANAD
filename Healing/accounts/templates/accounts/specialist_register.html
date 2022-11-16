@@ -3,24 +3,25 @@
 
 {% block content %}
 
-<div class="container">
-    <h1>تسجيل عضو جديد</h1>
+<h1>تسجيل أخصائي</h1>
 
     <form action="{% url 'accounts:register_specialist' %}" method="POST" class="d-flex flex-column gap-2" enctype="multipart/form-data">
        {% csrf_token %}
         <h1 class="h3 mb-3 fw-normal"></h1>
     
-        <div class="form-floating">
+        <div class="form-floating ">
             <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
-            <label for="floatingInput">اسم المستخدم</label>
+            <label for="floatingInput" style="color: #333333;">اسم المستخدم</label>
           </div>
-          <label  class="form-floating">الصورة الشخصية</label>
+          <label  class="form-floating"style="color: #333333;">الصورة الشخصية</label>
         <input type="file" name="specialist_image" accept="image/*" class="form-control" />
 
           <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
             <label for="floatingInput">البريد الالكتروني</label>
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+            
           </div>
+        
 
           <div class="form-floating">
             <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="first_name">
@@ -37,7 +38,13 @@
           </div>
           <label  class="form-floating">صورة المؤهل الدراسي</label>
         <input type="file" name="specialist_specialization_image" accept="file/.pdf" class="form-control" />
-          <div class="form-floating">
+          
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInput" placeholder="نبذة عن نفسك" name="specialist_information">
+          <label for="floatingInput">نبذة عن نفسك</label>
+        </div>
+        
+        <div class="form-floating">
             <input type="text" class="form-control" id="floatingInput" placeholder="city" name="specialist_city">
             <label for="floatingInput">المدينة</label>
           </div>
@@ -57,11 +64,9 @@
         </div>
         
     
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">تسجيل</button>
        
       </form>
 
-
-</div>
 
 {% endblock%}
