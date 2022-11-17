@@ -7,7 +7,7 @@
 <h1>{{ post.title }}</h1>
 <div class="container">
     <p>{{ post.publish_date }}, بواسطة {{ post.user.username }}</p>
-    <img src="{{ post.image.url }}"  class="w-100"/>
+    <img src="{{ post.image.url }}"  class=" col-md-7 order-md-2"/>
     <div>
         {{ post.content }}
     </div>
@@ -29,6 +29,7 @@
     {% endfor %}
     
     <hr/>
+    <div >
     <form action="{% url 'Website:add_comment' post.id %}" method="POST">
         {% csrf_token %}
         <label class="form-label">الاسم:</label>
@@ -38,7 +39,7 @@
         <textarea name="content" class="form-control"></textarea>
 
         <input type="submit" class="btn btn-primary mt-2" value="New Comment" />
-    </form>
+    </form></div>
 
 </div>
 

@@ -5,14 +5,17 @@ from django.contrib.auth.models import User, Permission, Group
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from Website.models import Group,Post,Mission,Comment
+from django.core.mail import send_mail, BadHeaderError
 # Create your views here.
 
 
 def home(request:HttpRequest):
-    return render(request,"Website/base.html")
+    names = Specialist.objects.all()
+    return render(request,"Website/base.html",{'names':names})
 
 @login_required(login_url="/account/login/")
 def my_group_list(request:HttpRequest):
+    is_specialist = Specialist.objects.filter(user_id=request.user.id).exists()
     user=request.user.id
     groups=Group.objects.filter(member=Member.objects.get(user_id=user))
     
@@ -81,15 +84,19 @@ def my_groups(request : HttpRequest , specialist_id : int):
     groups=Group.objects.filter(specialist_id=specialist_id)
     return render(request,"Website/group_list.html",{"groups":groups})
 
+def contact_us(request:HttpRequest):
+    msg=''
+    if request.method=="POST":
+         msg='تم الارسال'
+    return render(request,"Website/contact_us.html",{'msg':msg})
 
-@login_required(login_url="/account/login/")
 def group_detail(request : HttpRequest, group_id : int):
     
-    try:
-        group = Group.objects.get(id=group_id)
-        is_member = group.member.filter(user=request.user.id).exists()
+    group = Group.objects.get(id=group_id)
+    is_member = group.member.filter(user_id=request.user.id).exists()
  
-        missions=Mission.objects.filter(group_id=group_id)
+    missions=Mission.objects.filter(group_id=group_id)
+    try:
         if request.method == "POST":
             group.chat_url=request.POST["chat_url"]
             group.save()
@@ -110,17 +117,25 @@ def specialist_detail(request : HttpRequest, spcialist_id : int):
     return render(request, "Website/specialist_detail.html", {"specialist" : specialist})
 
 
-
-def new_mission(request:HttpRequest):
-    groups=Group.objects.filter(specialist_id=request.user.id)
-
-    try:
-        new_mission=Mission(group=Group.objects.get(request.POST["id"]),mission_name=request.POST["mission_name"],start_date=request.POST["start_date"],end_date=request.POST["end_date"])
-        new_mission.save()
-    except:
-        msg="لايمكن انشاء المهمة."
-        return render(request,"Website/notfound.html",{"msg" : msg})
-    return render(request,"Website/new_mission.html",{"groups":groups})
+def my_missions(request:HttpRequest):
+   # user=request.user
+    #missions=mission.member.filter(member_id=user.id)
+    #if request.method=='POST':
+     #   new_mission=Mission(mission_check=["mission_check"])
+      #  new_mission.save()
+    pass
+    return render(request,"Website/my_missions.html",{'missions':missions})
+def new_mission(request:HttpRequest,group_id:int):
+    group=Group.objects.get(id=group_id)
+    missions=Mission.objects.filter(group_id=group_id)
+    if request.method == "POST":
+        try:
+            new_mission=Mission(group=Group.objects.get(id=group_id),mission_name=request.POST["mission_name"],start_date=request.POST["start_date"],end_date=request.POST["end_date"])
+            new_mission.save()
+        except:
+            msg="لايمكن انشاء المهمة."
+            return render(request,"Website/notfound.html",{"msg" : msg})
+    return render(request,"Website/new_mission.html",{"group":group,'missions':missions})
 
 
 
@@ -140,35 +155,40 @@ def create_group(request:HttpRequest):
 #post
 def add_post(request : HttpRequest):
     user : User = request.user
-   
+    is_specialist = Specialist.objects.filter(user_id=request.user.id).exists()
     if user.is_authenticated:
         if request.method == "POST":
-            new_post = Post(user = request.user, title=request.POST["title"], content = request.POST["content"], publish_date=request.POST["publish_date"], is_published = request.POST["is_published"], post_type=request.POST["post_type"] , image=request.FILES["image"])
+            new_post = Post(user = request.user, title=request.POST["title"], content = request.POST["content"], publish_date=request.POST["publish_date"], is_published = True, post_type=request.POST["post_type"] , image=request.FILES["image"])
             new_post.save()
     else:
         return redirect("accounts:login_user")
 
-    return render(request, "Website/add_post.html", {"Post" : Post})
+    return render(request, "Website/add_post.html", {"Post" : Post,'is_specialist':is_specialist})
     
 def list_posts(request: HttpRequest):
-    
-    
-    if "search" in request.GET:
-        posts =Post.objects.filter(title__contains=request.GET["search"])
-    else:
-        posts = Post.objects.filter(post_type="Story")
+        error_msg=''
+        if "search" in request.GET:
+            posts =Post.objects.filter(title__contains=request.GET["search"])
+        else:
+            try:
+                if Post.objects.filter(post_type="Story ").exists():
+                    posts =Post.objects.filter(post_type="Story ")
+                else:
+                    error_msg='لاتوجد مواضيع لعرضها'
+            except:
+                error_msg="نأسف هناك خطأ"
 
-    return render(request, "Website/view_posts.html", {"posts" : posts})
+        return render(request, "Website/view_posts.html", {"posts" : posts,'error_msg':error_msg})
 
 def list_posts_artical(request: HttpRequest):
-    
-    
-    if "search" in request.GET:
-        posts =Post.objects.filter(title__contains=request.GET["search"])
+    error_msg=''
+    if Post.objects.filter(post_type="Article").exists():
+       posts=Post.objects.filter(post_type="Article")
     else:
-        posts = Post.objects.filter(post_type="Artical")
+        error_msg='لاتوجد مواضيع لعرضها'
+    
 
-    return render(request, "Website/view_posts.html", {"posts" : posts})
+    return render(request, "Website/view_posts.html",{"posts" : posts,'error_msg':error_msg})
 
 
 

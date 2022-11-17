@@ -1,53 +1,61 @@
-
 {% extends 'Website/base.html' %}
 {% load static%}
-{%block content%}{%block specialist%}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <link rel="stylesheet" href="{% static 'style/cards.css' %}">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
-  <title>Custom Bootstrap 4 card</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500&amp;subset=latin-ext" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-</head>
+{%block title%} {{group.group_name}}{%endblock%}
+
+{%block content%}
 
 
-<body>
-  {%for group in groups%}
-  <div class="container">
-    <div class="row pt-5 m-auto">
-      <div class="col-md-6 col-lg-4 pb-3">
 
-        <!-- Copy the content below until next comment -->
-        <div class="card card-custom bg-white border-white border-0">
-          <div class="card-custom-img" style="background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="{% static 'imgs/group_avatar.jpg' %}" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">{{group.group_name}}<br>
-            </h4>
-            <p class="card-text">{{group.group_info}}</p>
-          </div>
-          <div class="card-footer" style="background: inherit; border-color: inherit;">
-            <a href="#" class="btn btn-primary">انضمام</a>
-            <a href="#" class="btn btn-outline-primary">للتفاصيل</a>
-          </div>
-        </div>
-        <!-- Copy until here -->
+<h6>اسم المجموعة</h6>
+<p>{{group.group_name}}</p>
+<hr>
+<h6> المهام السابقة</h6>
 
-      </div>
-      
-    </div>
-  </div>
-  {%endfor%}
+<div>{%for mission in missions %} 
+<ol type="1">
+   
+  <li><p>{{mission.mission_name}}</p></li>
 
-</body>
+</ol>  {%endfor%}
+</div>
+<br>
 
-</html>{%endblock%}
+<div>
+<h6>عدد الاعضاءالمتبقين للانضمام</h6>
+<p>{{group.member_number}}</p>
+<h6>رابط محادثة المجموعة</h6><br>
+<a href="{{group.chat_url}}">{{group.chat_url}}</a>
+
+<h6>تاريخ بدايةالمجموعة</h6><br>
+<p>{{group.start_date}}</p>
+<h6>تاريخ النهاية</h6><br>
+<p>{{group.end_date}}</p>
+
+</div>
+{% if perms.Website.add_mission %}
+<form class="form" method="POST">
+  <div>
+  {% csrf_token %}
+<div class="mb-3">
+    <label  class="form-label">ادراج مهمة جديدة:</label>
+    <input type="text" class="form-control" name="mission_name" >
+</div>
+
+<div class="mb-3">
+  <label  class="form-label">تاريخ البدء</label>
+  <input type="datetime-local" class="form-control" name="start_date" />
+</div>
+
+
+<div class="mb-3">
+  <label  class="form-label">تاريخ الانتهاء</label>
+  <input type="datetime-local" class="form-control" name="end_date" />
+</div>
+<input class="btn btn-primary" type="submit" value="ادراج" />
+</form></div>
+
+{%else%}
+{%endif%}
+
 {%endblock%}

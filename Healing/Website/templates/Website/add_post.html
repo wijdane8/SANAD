@@ -1,9 +1,14 @@
 {% extends 'Website/base.html' %}
 
-{% block title %} المقالات {% endblock %}
+{% block title %}
+{%if is_specialist%}
+انشر مقال 
+{%else%}{%endif%}
+{% endblock %}
+
 
 {% block content %}
-    <h1> المقالات </h1>
+
 
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -24,23 +29,22 @@
             <label  class="form-label">تاريخ النشر</label>
             <input type="datetime-local" class="form-control" name="publish_date" />
         </div>
-
-
-        <div class="mb-3">
-            <label class="form-label">جاهز للنشر؟ </label>
-            <select class="form-select" name="is_published">
-                <option value="True">نعم</option>
-                <option value="False">لا</option>
-            </select>
-        </div>
+        {%if is_specialist%}
         <div class="mb-3">
             <label class="form-label">نوع الموضوع</label>
-            <select class="form-select" name="post_type">
+            <select required class="form-select" name="post_type">
                 <option value="Article">مقال</option>
                 <option value="Story ">قصة الهام</option>
             </select>
         </div>
-        
-        <input class="btn btn-primary" type="submit" value="Creat Post" />
+        {%else%}
+        <div class="mb-3">
+            <label class="form-label">نوع الموضوع</label>
+            <select  class="form-select" name="post_type">
+                <option value="Story ">قصة الهام</option>
+            </select>
+        </div>
+        {%endif%}
+        <input class="btn btn-primary" type="submit" value="إضافة" />
     </form>
 {% endblock %}

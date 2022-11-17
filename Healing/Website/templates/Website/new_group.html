@@ -1,18 +1,18 @@
 {% extends 'Website/base.html' %}
 
-{% block title %} create new group {% endblock %}
+{% block title %} انشاء مجموعة {% endblock %}
 
 {% block content %}
-    <h1>create new group</h1>
+    <h1>انشاء مجموعة جديدة</h1>
 
     <form action="" method="POST" >
         {% csrf_token %}
         <div class="mb-3">
-            <label  class="form-label">اسم المجموعة</label>
+            <label  class="form-label" style="margin-right:0 ;">اسم المجموعة</label>
             <input type="text" class="form-control" name="group_name">
         </div>
         <div class="mb-3">
-            <label  class="form-label">معلومات المجموعة</label>
+            <label  class="form-label"style="margin-right:0 ;">معلومات المجموعة</label>
             <textarea type="text" class="form-control" name="group_info"></textarea>
         </div>
 

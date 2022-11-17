@@ -1,0 +1,20 @@
+{% extends 'Website/base.html' %}
+{% load static%}
+
+{%block title%} {{group.group_name}}{%endblock%}
+
+{%block content%}
+
+
+
+<h6> مهامي</h6>
+
+<div>{%for mission in missions %} 
+<form method="POST">
+<ol type="1">
+   
+  <li><p>{{mission.mission_name}}</p><input type="checkbox" name="mission_check" value="true"></li>
+
+</ol> </form> {%endfor%}
+</div>
+{%endblock%}

@@ -10,7 +10,7 @@
         <h1 class="h3 mb-3 fw-normal"></h1>
     
         <div class="form-floating ">
-            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+            <input required="" type="text" class="form-control" id="floatingInput" placeholder="اسم المستخدم" name="username">
             <label for="floatingInput" style="color: #333333;">اسم المستخدم</label>
           </div>
           <label  class="form-floating"style="color: #333333;">الصورة الشخصية</label>
@@ -18,26 +18,26 @@
 
           <div class="form-floating">
             <label for="floatingInput">البريد الالكتروني</label>
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+            <input required type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
             
           </div>
         
 
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="first_name">
+            <input required type="text" class="form-control" id="floatingInput" placeholder="الاسم الاول" name="first_name">
             <label for="floatingInput">الاسم الأول</label>
           </div>
 
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Last Name" name="last_name">
+            <input required type="text" class="form-control" id="floatingInput" placeholder="اسم العائلة" name="last_name">
             <label for="floatingInput">الأسم الأخير</label>
           </div>
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="specialization" name="specialist_specialization">
+            <input required type="text" class="form-control" id="floatingInput" placeholder="التخصص" name="specialist_specialization">
             <label for="floatingInput">التخصص</label>
           </div>
-          <label  class="form-floating">صورة المؤهل الدراسي</label>
-        <input type="file" name="specialist_specialization_image" accept="file/.pdf" class="form-control" />
+          <label  class="form-floating">صورة المؤهل </label>
+        <input required type="file" name="specialist_specialization_image" accept="file/.pdf" class="form-control" />
           
         <div class="form-floating">
           <input type="text" class="form-control" id="floatingInput" placeholder="نبذة عن نفسك" name="specialist_information">
@@ -45,23 +45,27 @@
         </div>
         
         <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="city" name="specialist_city">
+            <input type="text" class="form-control" id="floatingInput" placeholder="المدينة" name="specialist_city">
             <label for="floatingInput">المدينة</label>
           </div>
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" name="specialist_phone">
+            <input required type="text" class="form-control" id="floatingInput" placeholder="رقم الهاتف" name="specialist_phone">
             <label for="floatingInput">رقم الهاتف</label>
           </div>
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="specialist_personal_page" name="specialist_personal_page">
+            <input type="text" class="form-control" id="floatingInput" placeholder="رابط الصفحة الشخصية" name="specialist_personal_page">
             <label for="floatingInput">الصفحة الشخصية</label>
           </div>
 
 
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="كلمةالمرور" name="password">
           <label for="floatingPassword">كلمة المرور</label>
         </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="تأكيد كلمة المرور" name="confirm-password">
+          <label for="floatingPassword">تأكيد كلمة المرور</label>
+        </div><label style="color: #858484;">{{error_msg}}</label>
         
     
         <button class="w-100 btn btn-lg btn-primary" type="submit">تسجيل</button>

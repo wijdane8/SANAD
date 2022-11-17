@@ -4,7 +4,7 @@
 {% block content %}
 
 
-
+{{error_msg}}
 {% if "search"  in  request.GET %}
     <h2> Search results for "{{ request.GET.search }}": </h2>
 {% endif %}
@@ -38,7 +38,7 @@
             </tr></div>
             {% endfor %}
             {%elif names%}
-            <h3 style="text-align:center ;color: rgb(48, 92, 117);">قائمة الأخصائيين</h3>
+            <h5 style="text-align:center ;color: rgb(48, 92, 117);">قائمة الأخصائيين</h5>
             <div class="container">
                 <table class="table">
                     <thead>
