@@ -7,8 +7,9 @@
 {% block content %}
 <h1>{{ specialist.specialist_name }}</h1>
 <div class="container">
-    <p>{{ specialist.specialist_specialization }}, التقييم{{ specialist.specialist_rate }}</p>
-    <img src="{{ specialist.specialist_image.url }}"  class="w-100"/>
+    <img src="{{ specialist.specialist_image.url }}" class=" col-md-7 order-md-2" style="height:30vh ;width:30vh"/><br>
+    <h6>التخصص</h6>
+    <label>{{ specialist.specialist_specialization }}</label><br>
     <div>
         {{ specialist.specialist_information }}
     </div>

@@ -3,19 +3,18 @@
 {%block title%} {{group.group_name}}{%endblock%}
 
 {%block content%}
-
-<h2>{{group.group_name}}</h2><br>
-<h2>معلومات المجموعة</h2>
+<br>
+<br>
+<h5>{{group.group_name}}</h5><br>
+<h6>معلومات المجموعة</h6>
 <p>{{group.group_info}}</p><br>
-<hr>
-<h3>اسم الأخصائي</h3><br>
-<p>{{group.created_by}}</p>
-
-<h3>عدد الاعضاء</h3><br>
+<h5>اسم الأخصائي</h5><br>
+<p>{{group.created_by}}</p><br>
+<h5>عدد الاعضاء</h5><br>
 <p>{{group.member_number}}</p>
-<h3>تاريخ البداية</h3><br>
+<h6>تاريخ البداية</h6><br>
 <p>{{group.start_date}}</p>
-<h3>تاريخ النهاية</h3><br>
+<h5>تاريخ النهاية</h5><br>
 <p>{{group.end_date}}</p>
 
 {% if perms.Website.add_mission %}
@@ -29,7 +28,7 @@
 
 </form>
 {%elif is_member %}
-<h3>المهمات </h3><br>
+<h5>المهمات </h5><br>
 {%for mission in missions%}
 <ol type="1">
   <li>{{mission.mission_name}}</li>
