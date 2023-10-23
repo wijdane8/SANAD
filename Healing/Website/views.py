@@ -11,7 +11,7 @@ from django.core.mail import send_mail, BadHeaderError
 
 def home(request:HttpRequest):
     names = Specialist.objects.all()
-    return render(request,"Website/base.html",{'names':names})
+    return render(request,"Website/index.html",{'names':names})
 
 @login_required(login_url="/account/login/")
 def my_group_list(request:HttpRequest):
