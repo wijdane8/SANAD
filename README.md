@@ -1,35 +1,89 @@
-## **Project Name :**
+# Sanad – Psychological Support Platform
 
-healing - تعافي
+**Sanad (سند)** is a web-based platform that offers structured psychological and behavioral support through interactive group sessions led by verified specialists. It aims to provide a safe and empowering environment for individuals seeking personal growth and emotional support.
 
-### **Project Description:**
+---
 
-         A Website that provides psychological and behavioral support groups for people who need it by confirmed specialists.
+## 🌟 Key Features
 
-### **Features List**
+### 👥 User Roles
 
-*   join more the one group(members)
-*   a limited number of members for each group.
-*   daily\\weekly missions created by Specialists.
-*   articles are written by Specialists.
-*   Specialists confirmed by the manager.
-*   can create up to 5 groups(Specialist)
-*   inspirations stories are written by members
+- **Members**
+  - Join multiple support groups
+  - Share personal inspirational stories
+  - Comment on articles and stories
 
-### **pages**
+- **Specialists**
+  - Create and manage up to 5 support groups
+  - Write educational and motivational articles
+  - Assign daily or weekly missions to group members
+  - Start group discussions and comment on content
 
-*   home
-*   sign up
-*   contact us
-*   Specialist's page
-*   group information page
-*   articles page\\with comments
-*   stories page\\with comment
+- **Managers**
+  - Confirm or manage specialist accounts
+  - Edit or delete specialists, members, comments, or entire groups
 
-### **groups**
+---
 
-*   members: join groups-write story-write comments.
-*   Specialists: create a group - write articles - create missions - start group chat  - write a comment.
-*   manager\\s:confirmed Specialist - delete\\edit Specialist - delete\\edit member - delete group - delete comments.
+### 📋 Core Functionalities
 
-[**WireFrame link**](https://www.figma.com/file/m368hAQyI0DSAn5p9Pf5NX/final-project)
+- Join multiple groups (per member)
+- Limited number of members per group
+- Articles written and published by specialists (with comments)
+- Inspirational stories by members (with comments)
+- Daily/weekly mission system assigned by specialists
+- Structured user roles and permissions
+- Authentication system (Sign up / Sign in)
+- Contact Us form
+
+---
+
+### 🗂️ Page Structure
+
+- Home page
+- Sign Up / Authentication pages
+- Contact Us
+- Specialist dashboard
+- Group information page
+- Articles page (with comments)
+- Stories page (with comments)
+
+---
+
+## 🧠 Tech Stack
+
+- **Frontend**: HTML5, CSS3, Bootstrap 5
+- **Backend**: Django (Python)
+- **Database**: SQLite (default Django database)
+
+---
+
+## 🧪 Wireframe / UI Design
+
+View the UI prototype and wireframes:  
+🔗 [Insert your Figma / Wireframe link here](https://www.figma.com/file/m368hAQyI0DSAn5p9Pf5NX/final-project)
+
+---
+
+## 📂 Setup Instructions
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/sanad-support.git
+
+# Navigate to the project directory
+cd sanad-support
+
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Apply migrations
+python manage.py migrate
+
+# Run the development server
+python manage.py runserver
+
