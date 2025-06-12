@@ -61,7 +61,7 @@
 ## 🧪 Wireframe / UI Design
 
 View the UI prototype and wireframes:  
-🔗 [Insert your Figma / Wireframe link here](https://www.figma.com/file/m368hAQyI0DSAn5p9Pf5NX/final-project)
+🔗 (https://www.figma.com/file/m368hAQyI0DSAn5p9Pf5NX/final-project)
 
 ---
 
