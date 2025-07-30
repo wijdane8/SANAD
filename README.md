@@ -72,7 +72,7 @@ View the UI prototype and wireframes:
 git clone https://github.com/your-username/sanad-support.git
 
 # Navigate to the project directory
-cd sanad-support
+cd Healing
 
 # Create and activate a virtual environment
 python -m venv venv
