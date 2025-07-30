@@ -1,14 +1,159 @@
 {% extends 'Website/index.html' %}
 
+{% block title %}التسجيل | تعافي{% endblock %}
 
 {% block content %}
-<div class="container">
-<form action="{% url 'accounts:register_type' %}" method="POST" class="d-flex flex-column">
-    {% csrf_token %}
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-4">اختر نوع التسجيل</h3>
+          <div class="d-flex justify-content-center mb-4">
+            <div class="form-check me-3">
+              <input class="form-check-input" type="radio" name="regType" id="optMember" value="member" checked>
+              <label class="form-check-label" for="optMember">تسجيل أعضاء</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="regType" id="optSpecialist" value="specialist">
+              <label class="form-check-label" for="optSpecialist">تسجيل أخصائيين</label>
+            </div>
+          </div>
 
-<form action="/action_page.php" method="get">
-  <input type="radio" id="member" name="register_type" value="member"checked="checked"> <label for="member" style="color:#212121 ;align-content: center;">تسجيل الأعضاء</label>
-  <input type="radio" id="specialist" name="register_type" value="specialist" > <label for="specialist" style="color:#212121 ;align-content: center;">تسجيل الأخصائيين</label>
-  <input type="submit" value="next">
-</form></div>
-{%endblock %}
+          <!-- Member Form -->
+          <form id="memberForm" action="{% url 'accounts:register_type' %}" method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <input type="hidden" name="regType" value="member">
+            
+            {% csrf_token %}
+            <div class="row g-3">
+              <div class="col-md-6 form-floating">
+                <input type="text" name="username" class="form-control" placeholder="اسم المستخدم" required>
+                <label>اسم المستخدم</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="email" name="email" class="form-control" placeholder="البريد الإلكتروني" required>
+                <label>البريد الإلكتروني</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="text" name="first_name" class="form-control" placeholder="الاسم الأول" required>
+                <label>الاسم الأول</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="text" name="last_name" class="form-control" placeholder="الاسم الأخير">
+                <label>الاسم الأخير</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="number" name="member_age" class="form-control" placeholder="العمر" required>
+                <label>العمر</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="text" name="member_city" class="form-control" placeholder="المدينة" required>
+                <label>المدينة</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="password" name="password" class="form-control" placeholder="كلمة المرور" required>
+                <label>كلمة المرور</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="password" name="confirm_password" class="form-control" placeholder="تأكيد كلمة المرور" required>
+                <label>تأكيد كلمة المرور</label>
+              </div>
+            </div>
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-primary btn-lg">تسجيل عضو جديد</button>
+            </div>
+          </form>
+
+          <!-- Specialist Form -->
+          <form id="specialistForm" action="{% url 'accounts:register_type' %}" method="POST" enctype="multipart/form-data" class="needs-validation d-none mt-4" novalidate>
+            {% csrf_token %}
+            <input type="hidden" name="regType" value="specialist">
+            
+            {% csrf_token %}
+            <div class="row g-3">
+              <div class="col-md-6 form-floating">
+                <input type="text" name="username" class="form-control" placeholder="اسم المستخدم" required>
+                <label>اسم المستخدم</label>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">الصورة الشخصية</label>
+                <input type="file" name="specialist_image" accept="image/*" class="form-control" required>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="email" name="email" class="form-control" placeholder="البريد الإلكتروني" required>
+                <label>البريد الإلكتروني</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="text" name="first_name" class="form-control" placeholder="الاسم الأول" required>
+                <label>الاسم الأول</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="text" name="last_name" class="form-control" placeholder="الاسم الأخير" required>
+                <label>الاسم الأخير</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="text" name="specialist_specialization" class="form-control" placeholder="التخصص" required>
+                <label>التخصص</label>
+              </div>
+              <div class="col-12">
+                <label class="form-label">صورة المؤهل (PDF)</label>
+                <input type="file" name="specialist_specialization_image" accept="application/pdf" class="form-control" required>
+              </div>
+              <div class="col-12 form-floating">
+                <textarea name="specialist_information" class="form-control" placeholder="نبذة عن نفسك" style="height: 100px"></textarea>
+                <label>نبذة عن نفسك</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="text" name="specialist_city" class="form-control" placeholder="المدينة" required>
+                <label>المدينة</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="tel" name="specialist_phone" class="form-control" placeholder="رقم الهاتف" required>
+                <label>رقم الهاتف</label>
+              </div>
+              <div class="col-12 form-floating">
+                <input type="text" name="specialist_personal_page" class="form-control" placeholder="الرابط الشخصي">
+                <label>الرابط الشخصي</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="password" name="password" class="form-control" placeholder="كلمة المرور" required>
+                <label>كلمة المرور</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="password" name="confirm_password" class="form-control" placeholder="تأكيد كلمة المرور" required>
+                <label>تأكيد كلمة المرور</label>
+              </div>
+            </div>
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-primary btn-lg">تسجيل أخصائي</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('input[name="regType"]').forEach(el => {
+    el.addEventListener('change', () => {
+      document.getElementById('memberForm').classList.toggle('d-none', el.value!=='member');
+      document.getElementById('specialistForm').classList.toggle('d-none', el.value!=='specialist');
+    });
+  });
+  // Bootstrap validation
+  (() => {
+    'use strict';
+    document.querySelectorAll('.needs-validation').forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+</script>
+{% endblock %}

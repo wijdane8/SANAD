@@ -1,31 +1,54 @@
 {% extends 'Website/index.html' %}
 
+{% block title %}تسجيل الدخول | تعافي{% endblock %}
 
 {% block content %}
+<section class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
+  <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold text-primary">تعـــافي</h2>
+      <h5 class="text-muted">الرجاء تسجيل الدخول</h5>
+      {% if msg %}
+      <div class="alert alert-warning mt-3">{{ msg }}</div>
+      {% endif %}
+    </div>
+    <form action="{% url 'accounts:login_user' %}" method="POST" class="needs-validation" novalidate>
+      {% csrf_token %}
+      <div class="form-floating mb-3">
+        <input type="text" name="username" class="form-control" id="floatingInput" placeholder="اسم المستخدم" required>
+        <label for="floatingInput">اسم المستخدم</label>
+        <div class="invalid-feedback">الرجاء إدخال اسم المستخدم.</div>
+      </div>
+      <div class="form-floating mb-4">
+        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="كلمة المرور" required>
+        <label for="floatingPassword">كلمة المرور</label>
+        <div class="invalid-feedback">الرجاء إدخال كلمة المرور.</div>
+      </div>
+      <div class="text-end mb-3">
+        <a href="{% url 'accounts:password_reset' %}" class="link-primary">نسيت كلمة المرور؟</a>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-lg">تسجيل الدخول</button>
+        <button type="button" class="btn btn-outline-primary btn-lg" onclick="location.href='{% url 'accounts:register_type' %}'">إنشاء حساب جديد</button>
+      </div>
+    </form>
+  </div>
+</section>
 
-<div class="container">
-    <h4>تسجيل الدخول</h4>
-
-    <form action="{% url 'accounts:login_user' %}" method="POST" class="d-flex flex-column gap-2">
-       {% csrf_token %}
-
-        <strong class="">{{ msg }}</strong>
-        <h2>تعـــافي</h2>
-        <h1 class="h3 mb-3 fw-normal">الرجاء تسجيل الدخول</h1>
-    
-        <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="اسم المستخدم" name="username">
-            <label for="floatingInput">اسم المستخدم</label>
-          </div>
-
-        <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="كلمة المرور" name="password">
-          <label for="floatingPassword">كلمة المرور</label>
-        </div>
-    
-        <button class="w-100 btn btn-lg btn-primary" type="submit">تسجيل الدخول</button>
-        <button class="w-100 btn btn-lg btn-primary" type="button" onclick="window.location.href = '{% url 'accounts:register_type' %}';" >تسجيل عضو جديد</button>
-        </form>
-</div>
-
-{% endblock%}
+<script>
+  // Bootstrap validation
+  (function() {
+    'use strict';
+    var forms = document.querySelectorAll('.needs-validation');
+    Array.prototype.slice.call(forms).forEach(function(form) {
+      form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+</script>
+{% endblock %}

@@ -1,453 +1,772 @@
-<!doctype html>
-{% load static%}
+{% load static %}
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head >
-    
-    <meta charset="utf-8">
-    <base href="/">
-    <meta name="description" content="موقع لتقديم خدمة قروبات الدعم لمساعدة الأشخاص على تخطي مشاكلهم السلوكية والنفسية">
-    <meta name="keywords" content="">
-    <meta name="author" content="ًوجــدان علي الحربي -wijdan ali alHarbi">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- open graph  -->
-    <meta property="og:title" content="موقع تعافي ">
-    <meta property="og:description" content="موقع تعافي لمجموعات الدعم السلوكي والنفسي">
-    <meta property="og:image" content="https://satr.codes/assets/images/logo.png">
-    <meta property="og:site_name" content="تعــافي">
-    <meta property="og:locale" content="ar-SA">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="#">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/footers/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="منصة تعافي للدعم النفسي - بيئة آمنة للشفاء والنمو النفسي مع مختصين مؤهلين">
+    <link rel="canonical" href="https://sand-platform.com/">
+    <title>{% block title %}تعافي | منصة الدعم النفسي{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{% static 'style/base.css' %}">
-    <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>{% block title %} تعـــافي {% endblock %}</title>
-    <link 
-    rel="stylesheet" 
-    href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" 
-    integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" 
-    crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>   
-<style>
-      .header-dark {
-  background:url(../../assets/img/mountain_bg.jpg) rgb(255, 255, 255);
-  background-size:cover;
-  padding-bottom:80px;
-}
-
-@media (min-width:768px) {
-  .header-dark {
-    padding-bottom:120px;
-  }
-}
-
-.header-dark .navbar {
-  background:transparent;
-  padding-top:0;
-  padding-bottom:0;
-  color:rgb(81, 80, 80);
-  border-radius:0;
-  box-shadow:none;
-  border:none;
-}
-
-@media (min-width:768px) {
-  .header-dark .navbar {
-    padding-top:.75rem;
-    padding-bottom:.75rem;
-  }
-}
-
-.header-dark .navbar .navbar-brand {
-  font-weight:bold;
-  color:inherit;
-}
-
-.header-dark .navbar .navbar-brand:hover {
-  color:#525252;
-}
-
-.header-dark .navbar .navbar-collapse span {
-  margin-top:5px;
-}
-
-.header-dark .navbar .navbar-collapse span .login {
-  color:#424141;
-  margin-right:.5rem;
-  text-decoration:none;
-}
-
-.header-dark .navbar .navbar-collapse span .login:hover {
-  color:rgb(32, 32, 32);
-}
-
-.header-dark .navbar .navbar-toggler {
-  border-color:#1e1e1e;
-}
-
-.header-dark .navbar .navbar-toggler:hover, .header-dark .navbar-toggler:focus {
-  background:none;
-}
-
-.header-dark .navbar .navbar-toggler {
-  color:rgb(27, 27, 27);
-}
-
-.header-dark .navbar .navbar-collapse, .header-dark .navbar .form-inline {
-  border-color:#0a0a0a;
-}
-
-@media (min-width: 992px) {
-  .header-dark .navbar.navbar .navbar-nav .nav-link {
-    padding-left:1.2rem;
-    padding-right:1.2rem;
-  }
-}
-
-.header-dark .navbar.navbar-dark .navbar-nav .nav-link {
-  color:#323232;
-}
-
-.header-dark .navbar.navbar-dark .navbar-nav .nav-link:focus, .header-dark .navbar.navbar-dark .navbar-nav .nav-link:hover {
-  color:#434343 !important;
-  background-color:transparent;
-}
-
-.header-dark .navbar .navbar-nav > li > .dropdown-menu {
-  margin-top:-5px;
-  box-shadow:0 4px 8px rgba(0,0,0,.1);
-  background-color:rgb(255, 255, 255);
-  border-radius:2px;
-}
-
-.header-dark .navbar .dropdown-menu .dropdown-item:focus, .header-dark .navbar .dropdown-menu .dropdown-item {
-  line-height:2;
-  font-size:14px;
-  color:#1f2e3a;
-}
-
-.header-dark .navbar .dropdown-menu .dropdown-item:focus, .header-dark .navbar .dropdown-menu .drodown-item:hover {
-  background:#292929;
-}
-
-.header-dark .navbar .action-button, .header-dark .navbar .action-button:active {
-  background:#87bfd8;
-  border-radius:20px;
-  font-size:inherit;
-  color:rgb(41, 41, 41);
-  box-shadow:none;
-  border:none;
-  text-shadow:none;
-  padding:.5rem .8rem;
-  transition:background-color 0.25s;
-}
-
-.header-dark .navbar .action-button:hover {
-  background:#6794a8;
-}
-
-.header-dark .navbar .form-inline label {
-  color:rgb(82, 82, 82);
-}
-
-.header-dark .navbar .form-inline .search-field {
-  display:inline-block;
-  width:80%;
-  background:none;
-  border:none;
-  border-bottom:1px solid transparent;
-  border-radius:0;
-  color:rgb(69, 69, 69);
-  box-shadow:none;
-  color:inherit;
-  transition:border-bottom-color 0.3s;
-}
-
-.header-dark .navbar .form-inline .search-field:focus {
-  border-bottom:1px solid rgb(72, 72, 72);
-}
-
-.header-dark .hero {
-  margin-top:60px;
-}
-
-@media (min-width:768px) {
-  .header-dark .hero {
-    margin-top:20px;
-  }
-}
-
-.header-dark .hero h1 {
-  color:rgb(65, 65, 65);
-  font-family:'Bitter', serif;
-  font-size:40px;
-  margin-top:20px;
-  margin-bottom:80px;
-}
-
-@media (min-width:768px) {
-  .header-dark .hero h1 {
-    margin-bottom:50px;
-    line-height:1.5;
-  }
-}
-
-.header-dark .hero .embed-responsive iframe {
-  background-color:rgb(55, 55, 55);
-}
-
-
-    </style>
-    
+   
 </head>
 
 <body>
-    <div>
-        <div class="header-dark">
-            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-                <div class="container"><img class="bi ms-2 mt-2" src="{% static 'imgs/logo.png' %}" width="60" height="45"><a class="navbar-brand" href="{% url 'Website:home' %}">تعـــافي</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse"id="navcol-1">
-                        <ul class="nav navbar-nav">
-                          <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'Website:home' %}">الرئيسية</a></li>
-                            <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >تصفح </a>
-                                <div class="dropdown-menu" role="menu">
-                                  <a class="dropdown-item" role="presentation" href="{% url 'Website:group_list' %}">المجموعات</a>
-                                  <a class="dropdown-item" role="presentation" href="{% url 'Website:spiecilest_list' %}">الأخصائيين</a>
-                                  <a class="dropdown-item" role="presentation" href="{% url 'Website:list_posts_artical' %}">المقالات</a>
-                                  <a class="dropdown-item" role="presentation" href="{% url 'Website:list_posts' %}">قصص للإلهام</a>
-                                  
-                                </div>
-                            </li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'Website:contact_us' %}">اتصل بنا</a></li>
-                            
-                        </ul>
-                        
-                        <form class="form-inline mr-auto" method="GET" action="{% url 'Website:group_list' %}">                          
-                            <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" placeholder=" البحث عن مجموعة" name="search" id="search"></div>
-                        </form>{% if request.user.is_authenticated %}
-                        {%block user%}
-                        <ul class="nav navbar-nav">
-                          <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="{% url 'Website:home' %}"> أهـــلاَ {{ request.user.first_name }}</a>
-                              <div class="dropdown-menu" role="menu">
-                                {% if perms.Website.add_mission %}
-                                    <a class="dropdown-item" role="presentation" href="{% url 'Website:my_groups' user.id %}">مجموعاتي</a>
-                                    <a class="dropdown-item" role="presentation" href="{% url 'Website:new_group' %}">انشاء مجموعة</a>
-                                    <a class="dropdown-item" role="presentation" href="{% url 'Website:my_groups' user.id %}">انشاء مهمة</a>
-                                    <a class="dropdown-item" role="presentation" href="{% url 'Website:add_post' %}">كتابة مقال</a>
-                                    <a class="dropdown-item" role="presentation" href="{% url 'accounts:logout_user' %}">تسجيل الخروج</a>
-                                    {% else %}
-                                    <a class="dropdown-item" role="presentation" href="{% url 'Website:my_group_list' %}">مجموعاتي</a>
-                                <a class="dropdown-item" role="presentation" href="{% url 'Website:add_post' %}">كتابة قصة</a>
-                                <a class="dropdown-item" role="presentation" href="{% url 'accounts:logout_user' %}">تسجيل الخروج</a>
-                              {%endif%}
-                                </div>
-                          </li>
-                        </ul>{%endblock%}
-                        {%else%}<span class="navbar-text"><a href="{% url 'accounts:login_user' %}" class="login">تسجيل الدخول</a></span><a class="btn btn-light action-button" role="button" href="{% url 'accounts:register_type' %}">عضو جديد</a></div>{%endif%}
-                </div>
-            </nav>
-            
-            <div class="container-lg themed-container text-left"dir="rtl">
-                  {%block content%}
-                  <header>
-                    <style>*{padding: 0; margin: 0; box-sizing: border-box;}
-                      body{height: 900px;}
-                      header {
-                        background: url("{% static 'imgs/hero.jpg' %}");
-                        text-align: center;
-                        width: 100%;
-                        height: auto;
-                        background-size: cover;
-                        background-attachment: fixed;
-                        position: relative;
-                        overflow: hidden;
-                        border-radius: 0 0 85% 85% / 30%;
-                      }
-                      header .overlay{
-                        width: 100%;
-                        height: 100%;
-                        padding: 50px;
-                        color: #FFF;
-                        text-shadow: 1px 1px 1px #333;
-                        background-image: linear-gradient( 135deg, #ffffff25 10%, #ffffff2e 100%);
-                        
-                      }
-                      
-                      h1 {
-                        font-family: 'Dancing Script', cursive;
-                        font-size: 80px;
-                        margin-bottom: 30px;
-                      }
-                      
-                      h3, p {
-                        font-family: 'Open Sans', sans-serif;
-                        margin-bottom: 30px;
-                      }
-                      
-                      button {
-                        border: none;
-                        outline: none;
-                        padding: 10px 20px;
-                        border-radius: 50px;
-                        color: #333;
-                        background: #fff;
-                        margin-bottom: 50px;
-                        box-shadow: 0 3px 20px 0 #0000003b;
-                      }
-                      button:hover{
-                        cursor: pointer;
-                      }</style>
-                      <div class="overlay">
-                    <h1></h1>
-                    <h3></h3>
-                    <p></p>
-                    <br><br><br><br><br><br>
-                    <br><br><br><br><br><br>
-                    <br>
-                      
-                        </div>
-                    </header>
-                  <main>
-                             
-                  
-                    <!-- Marketing messaging and featurettes
-                    ================================================== -->
-                    <!-- Wrap the rest of the page in another container to center all the content. -->
-                                  
-                  
-                      <!-- START THE FEATURETTES -->
-                  
-                      <hr class="featurette-divider">
-                  
-                      <div class="row featurette">
-                        <div class="col-md-7">
-                          <h2 class="featurette-heading fw-normal lh-1">مزايا مجموعات الدعم </h2>
-                          <p class="lead">
-                            إن التجربة العامة بين أعضاء مجموعة الدعم غالبًا ما تعني أن لديهم مشاعر أو مخاوف أو مشكلات يومية أو قرارات علاجية أو آثارًا جانبية للعلاج مماثلة. فالمشاركة في مجموعة يمنح المريض الفرصة لمشاركة أفراد لديهم غرض مشترك على الأرجح، كما يترجح أن يفهم كل واحد منهم الآخر.</p>
-                        </div>
-                        <div class="col-md-5">
-                          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'imgs/a.jpg' %}" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
-                  
-                        </div>
-                      </div>
-                  
-                      <hr class="featurette-divider">
-                  
-                      <div class="row featurette">
-                        <div class="col-md-7 order-md-2">
-                          <h2 class="featurette-heading fw-normal lh-1"></h2>
-                          <p class="lead">تجمع مجموعات الدعم بين الأشخاص الذين يعيشون نفس التجربة أو مروا بها سابقًا. فعلى سبيل المثال، يمكن أن يكون هذا العامل المشترك مرض السرطان أو حالات طبية مزمنة أو الإدمان أو فاجعة أو تقديم العناية.</p>
-                        </div>
-                        <div class="col-md-5 order-md-1">
-                          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'imgs/hero.jpg' %}" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
-                  
-                        </div>
-                      </div>
-                  
-                      <hr class="featurette-divider">
-                  
-                      <div class="row featurette">
-                        <div class="col-md-7">
-                          <h2 class="featurette-heading fw-normal lh-1">الحصول على أقصى استفادة من مجموعة الدعم</h2>
-                          <p class="lead">عند انضمامك إلى مجموعة دعم جديدة، قد يتملكك الغضب من مشاركة مشكلاتك الشخصية مع أشخاص لا تعرفهم. وقد يكون من المفيد أن تستمع أولاً ولفترة. وبمرور الوقت قد تساعدك مساهماتك بأفكارك وخبراتك الخاصة في الحصول على أقصى استفادة من مجموعة الدعم.</p>
-                        </div>
-                        <div class="col-md-5">
-                          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'imgs/j.jpg' %}"role="img aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
-                  
-                        </div>
-                      </div>
-                  
-                      <hr class="featurette-divider">
-                  
-                      <!-- /END THE FEATURETTES -->
-                  
-                    </div><!-- /.container -->
-                  
-                  
-                   
-                  </main>
-                  {%endblock%}
-            </div>        
-                
-            
-        </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol id="bootstrap" viewBox="0 0 118 94">
-        <title>Bootstrap</title>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
-      </symbol>
-      <symbol id="facebook" viewBox="0 0 16 16">
-        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-      </symbol>
-      <symbol id="instagram" viewBox="0 0 16 16">
-          <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
-      </symbol>
-      <symbol id="twitter" viewBox="0 0 16 16">
-        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-      </symbol>
-    </svg>
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 px-0 my-3 border-top" style="background-color:rgb(255, 255, 255) ;">
-          <div class="col-md-3 d-flex align-items-center">
-          <span class="ms-5 mb-md-0 text-muted">&copy; 2022 تعافي</span>
-        </div>
-    
-        
-      </footer>
-  </body>
+    <!-- ===== Navbar ===== -->
 
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'Website:home' %}"><i class="fas fa-hands-helping"></i> تعافي</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'Website:home' %}"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'Website:home' %}#about"><i class="fas fa-info-circle"></i> عن تعافي</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'Website:home' %}#services"><i class="fas fa-concierge-bell"></i> خدماتنا</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'Website:home' %}#pricing"><i class="fas fa-tags"></i> الباقات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'Website:home' %}#testimonials"><i class="fas fa-comments"></i> آراء العملاء</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'Website:home' %}#contact"><i class="fas fa-phone-alt"></i> اتصل بنا</a></li>
+
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-bs-toggle="dropdown">
+                                <span class="user-avatar">{{ request.user.get_full_name|default:request.user.username|first }}</span> {{ request.user.get_full_name|default:request.user.username }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li class="dropdown-header">حساب المستخدم</li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle"></i>الملف الشخصي</a></li>
+                                {% if perms.app.add_group %}
+                                    <!-- Specialist Menu -->
+                                    <li class="dropdown-header">أدوات المختصين</li>
+                                    <li><a class="dropdown-item" href="{% url 'Website:create_group' %}"><i class="fas fa-plus-circle"></i>إنشاء مجموعة</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Website:new_group' %}"><i class="fas fa-users-cog"></i>إدارة مجموعاتي</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Website:add_post' %}"><i class="fas fa-edit"></i>كتابة مقال جديد</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Website:list_posts' %}"><i class="fas fa-list"></i>مقالاتي المنشورة</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Website:new_mission' group_id=0 %}"><i class="fas fa-tasks"></i>إنشاء ورشة عمل</a></li>
+                                {% else %}
+                                    <!-- Member Menu -->
+                                    <li class="dropdown-header">أدوات الأعضاء</li>
+                                    <li><a class="dropdown-item" href="{% url 'Website:group_list' %}"><i class="fas fa-users"></i>المجموعات المتاحة</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Website:my_group_list' %}"><i class="fas fa-user-friends"></i>مجموعاتي</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Website:list_posts' %}"><i class="fas fa-newspaper"></i>مقالاتي</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'Website:my_missions' %}"><i class="fas fa-tasks"></i>مهامي</a></li>
+                                {% endif %}
+                                <li class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:logout_user' %}"><i class="fas fa-sign-out-alt"></i>تسجيل خروج</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item"><a class="btn btn-outline-primary me-2" href="{% url 'accounts:login_user' %}">تسجيل دخول</a></li>
+                        <li class="nav-item"><a class="btn btn-primary" href="{% url 'accounts:register_type' %}">إنشاء حساب</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+   {% if request.user.is_authenticated %}
+    <!-- ===== Quick Access Section ===== -->
+    <section id="home">  <!-- Changed ID to "home" to maintain navigation -->
+        <div class="container">
+            <div class="section-title">
+                <h2>وصلات سريعة</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="quick-access">
+                <div class="row">
+                    {% if perms.app.add_group %}
+                    <!-- Specialist Quick Access -->
+                    <div class="col-md-4 mb-4">
+                        <div class="access-card">
+                            <div class="access-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>مجموعاتي</h4>
+                            <p>إدارة المجموعات التي تقودها وتنظيم الجلسات والأنشطة</p>
+                            <a href="{% url 'Website:my_groups' request.user.id %}" class="btn btn-outline-primary mt-3">إدارة المجموعات</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="access-card">
+                            <div class="access-icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                            <h4>إنشاء مجموعة جديدة</h4>
+                            <p>ابدأ مجموعة دعم جديدة وادعُ الأعضاء للمشاركة</p>
+                            <a href="{% url 'Website:new_group' %}" class="btn btn-outline-primary mt-3">إنشاء مجموعة</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="access-card">
+                            <div class="access-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <h4>كتابة مقال جديد</h4>
+                            <p>شارك معرفتك وخبراتك من خلال مقالات مفيدة</p>
+                            <a href="{% url 'Website:add_post' %}" class="btn btn-outline-primary mt-3">كتابة مقال</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- Member Quick Access -->
+                    <div class="col-md-6 mb-4">
+                        <div class="access-card">
+                            <div class="access-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <h4>مجموعاتي</h4>
+                            <p>الوصول السريع للمجموعات التي تنتمي إليها</p>
+                            <a href="{% url 'Website:my_group_list' %}" class="btn btn-outline-primary mt-3">عرض مجموعاتي</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="access-card">
+                            <div class="access-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <h4>مقالاتي</h4>
+                            <p>عرض وتعديل المقالات التي قمت بنشرها</p>
+                            <a href="{% url 'Website:list_posts' %}" class="btn btn-outline-primary mt-3">عرض مقالاتي</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== Specialist Features ===== -->
+    {% if perms.app.add_group %}
+        <section class="specialist-features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>أدوات المختصين</h2>
+                    <div class="divider"></div>
+                </div>
+                
+                <div class="section-intro">
+                    <p>أدوات متكاملة لتمكين المختصين النفسيين من تقديم أفضل تجربة دعم للمجتمع</p>
+                </div>
+                
+                <!-- Using custom row class for increased spacing -->
+                <div class="row spaced-row">
+                    <div class="col-md-6">
+                        <div class="feature-box">
+                            <h4><i class="fas fa-layer-group"></i> إدارة المجموعات</h4>
+                            <p>سهولة في إنشاء وإدارة مجموعات الدعم النفسي، مع إمكانية إضافة أعضاء جدد، تحديد مواعيد الجلسات، وتتبع تقدم الأعضاء.</p>
+                            <a href="#" class="btn btn-outline-primary mt-2">إدارة مجموعاتي</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="feature-box">
+                            <h4><i class="fas fa-pen-fancy"></i> المحتوى التعليمي</h4>
+                            <p>أنشئ مقالات ومواد تعليمية قيمة لتثقيف الأعضاء وتقديم الدعم النفسي المعرفي، مع إمكانية الوصول إلى إحصائيات القراءة.</p>
+                            <a href="#" class="btn btn-outline-primary mt-2">إنشاء محتوى جديد</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="feature-box">
+                            <h4><i class="fas fa-chalkboard-teacher"></i> ورش العمل</h4>
+                            <p>صمم ورش عمل متخصصة في مواضيع نفسية محددة، مع إمكانية إضافة مهام وتتبع مشاركة الأعضاء.</p>
+                            <a href="#" class="btn btn-outline-primary mt-2">إنشاء ورشة عمل</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="feature-box">
+                            <h4><i class="fas fa-chart-line"></i> التقارير والإحصائيات</h4>
+                            <p>تتبع تقدم أعضاء مجموعاتك من خلال تقارير تفصيلية وإحصائيات توضح مستوى المشاركة والتحسن.</p>
+                            <a href="#" class="btn btn-outline-primary mt-2">عرض التقارير</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% else %}
+    <!-- ===== Hero Section (Shown only to non-logged-in users) ===== -->
+    <header class="hero" id="home">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1>رحلتك نحو الصحة النفسية تبدأ مع <span class="text-primary">تعافي</span></h1>
+                <p>منصة الدعم النفسي الأولى التي توفر لك المساعدة المتخصصة في بيئة آمنة ومتفهمة، برفقة مختصين مرخصين ومجتمع داعم.</p>
+                <div class="hero-buttons">
+                    <a href="{% url 'accounts:register_type' %}" class="btn btn-primary me-2">ابدأ رحلتك الآن</a>
+                    <a href="#services" class="btn btn-outline-primary">اكتشف خدماتنا</a>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endif %}
+    <!-- ===== About Section ===== -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>منصة تعافي للدعم النفسي</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="section-intro">
+                <p>تعافي هي منصة رائدة في تقديم خدمات الدعم النفسي عبر الإنترنت، تهدف إلى جعل الرعاية النفسية متاحة للجميع في أي وقت ومن أي مكان.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 class="mb-4">لماذا تختار منصة تعافي؟</h3>
+                    <p class="mb-4">نحن في تعافي نؤمن بأن الصحة النفسية هي أساس الحياة المتوازنة والسعيدة. لذلك نسعى جاهدين لتقديم خدمات نفسية عالية الجودة تلبي احتياجاتك الفردية في بيئة آمنة ومحترمة.</p>
+                    <p class="mb-5">باستخدام أحدث الأساليب العلاجية المبنية على الأدلة العلمية، وبرفقة فريق من الأخصائيين النفسيين المرخصين، نقدم لك المساعدة التي تحتاجها في رحلتك نحو التعافي والنمو النفسي.</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-start">
+                                <div class="me-3 mt-1">
+                                    <i class="fas fa-check-circle text-primary" style="font-size: 1.8rem;"></i>
+                                </div>
+                                <div>
+                                    <h5>أخصائيون مرخصون</h5>
+                                    <p>فريق من الأخصائيين النفسيين المؤهلين وذوي الخبرة</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-start">
+                                <div class="me-3 mt-1">
+                                    <i class="fas fa-check-circle text-primary" style="font-size: 1.8rem;"></i>
+                                </div>
+                                <div>
+                                    <h5>سرية تامة</h5>
+                                    <p>بيئة آمنة ومشفرة تحافظ على خصوصيتك</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-start">
+                                <div class="me-3 mt-1">
+                                    <i class="fas fa-check-circle text-primary" style="font-size: 1.8rem;"></i>
+                                </div>
+                                <div>
+                                    <h5>مرونة في المواعيد</h5>
+                                    <p>اختر الوقت المناسب لك من أي مكان</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-start">
+                                <div class="me-3 mt-1">
+                                    <i class="fas fa-check-circle text-primary" style="font-size: 1.8rem;"></i>
+                                </div>
+                                <div>
+                                    <h5>دعم متكامل</h5>
+                                    <p>جلسات فردية، جماعية، ومصادر تعليمية</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image"></div>
+            </div>
+            
+            <div class="features-grid mt-5">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>مجتمع داعم</h4>
+                    <p>انضم إلى مجتمع من الأفراد الذين يفهمون تحدياتك ويساندونك في رحلتك نحو التعافي</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4>خصوصية مضمونة</h4>
+                    <p>جميع جلساتك وبياناتك محمية بمعايير أمان عالية لضمان سرية معلوماتك</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>محتوى تعليمي</h4>
+                    <p>استفد من مكتبتنا الغنية بالمقالات والتمارين والموارد العلمية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Stats Section ===== -->
+    <section class="stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <div class="count" data-target="8500">0</div>
+                        <p>مستخدم نشط</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <i class="fas fa-comments"></i>
+                        <div class="count" data-target="2500">0</div>
+                        <p>جلسة دعم شهرياً</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <i class="fas fa-user-md"></i>
+                        <div class="count" data-target="85">0</div>
+                        <p>أخصائي نفسي</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <i class="fas fa-smile"></i>
+                        <div class="count" data-target="98">0</div>
+                        <p>رضا العملاء %</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Services Section ===== -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>خدماتنا المتكاملة</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="section-intro">
+                <p>نقدم في منصة تعافي مجموعة متنوعة من الخدمات النفسية التي صممت لتلبية احتياجاتك المختلفة ودعمك في رحلتك نحو الصحة النفسية</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://images.pexels.com/photos/1181717/pexels-photo-1181717.jpeg');"></div>
+                        <div class="service-content">
+                            <h3>جلسات فردية</h3>
+                            <p>جلسات علاجية فردية مع أخصائيين نفسيين مرخصين عبر الإنترنت، مصممة خصيصاً لتلبية احتياجاتك الشخصية وأهدافك العلاجية.</p>
+                            <a href="#" class="btn btn-outline-primary align-self-start">المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://images.pexels.com/photos/5710944/pexels-photo-5710944.jpeg');"></div>
+                        <div class="service-content">
+                            <h3>مجموعات الدعم</h3>
+                            <p>انضم إلى مجموعات الدعم المتخصصة التي تجمع أفراداً يمرون بتجارب مشابهة، في بيئة آمنة وتحت إشراف أخصائي نفسي.</p>
+                            <a href="#" class="btn btn-outline-primary align-self-start">المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');"></div>
+                        <div class="service-content">
+                            <h3>ورش العمل</h3>
+                            <p>ورش عمل تفاعلية تغطي مواضيع متنوعة مثل إدارة القلق، تحسين المزاج، تعزيز الثقة بالنفس، وغيرها من المهارات النفسية.</p>
+                            <a href="#" class="btn btn-outline-primary align-self-start">المزيد</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>آراء مستخدمينا</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="section-intro">
+                <p>قصص نجاح وتجارب حقيقية من مستخدمي منصة تعافي الذين وجدوا الدعم والمساعدة في رحلتهم نحو الصحة النفسية</p>
+            </div>
+            
+            <div class="swiper testimonialSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <p>"ساعدني تعافي بشكل كبير في تجاوز فترة الاكتئاب التي مررت بها. الأخصائية كانت محترفة جداً وفهمت احتياجاتي بشكل دقيق. الجلسات كانت نقطة تحول في حياتي."</p>
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="سارة محمد">
+                                </div>
+                                <div class="client-details">
+                                    <h4>سارة محمد</h4>
+                                    <p>مستخدمة منذ 8 أشهر</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <p>"مجموعات الدعم كانت تجربة رائعة بالنسبة لي. التعرف على أشخاص يمرون بتجارب مشابهة ساعدني كثيراً في الشعور بأنني لست وحدي. شكراً لفريق تعافي على هذه المنصة الرائعة."</p>
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="عمر خالد">
+                                </div>
+                                <div class="client-details">
+                                    <h4>عمر خالد</h4>
+                                    <p>مستخدم منذ سنة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <p>"كنت أعاني من القلق الاجتماعي لسنوات، وبفضل الجلسات الفردية والتمارين التي قدمها الأخصائي، استطعت تجاوز الكثير من مخاوفي. أنصح الجميع بتجربة تعافي."</p>
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="نورة عبدالله">
+                                </div>
+                                <div class="client-details">
+                                    <h4>نورة عبدالله</h4>
+                                    <p>مستخدمة منذ 6 أشهر</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <p>"المنصة ساعدتني في التعامل مع ضغوط العمل والاكتئاب. الجلسات عبر الإنترنت وفرت لي الراحة والخصوصية التي أحتاجها."</p>
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="أحمد علي">
+                                </div>
+                                <div class="client-details">
+                                    <h4>أحمد علي</h4>
+                                    <p>مستخدم منذ 4 أشهر</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Pricing ===== -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>باقات الدعم النفسي</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="section-intro">
+                <p>اختر الباقة التي تناسب احتياجاتك واستمتع برحلتك نحو الصحة النفسية مع أفضل الخدمات والرعاية</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>الباقة الأساسية</h3>
+                            <div class="price">99 <span>ريال/شهرياً</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 2 جلسات فردية شهرياً</li>
+                            <li><i class="fas fa-check"></i> وصول محدود لمجموعات الدعم</li>
+                            <li><i class="fas fa-check"></i> ورشة عمل واحدة شهرياً</li>
+                            <li><i class="fas fa-check"></i> وصول محدود للمكتبة الرقمية</li>
+                            <li><i class="fas fa-times text-secondary"></i> متابعة أسبوعية مع الأخصائي</li>
+                            <li><i class="fas fa-times text-secondary"></i> جلسات طارئة</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary">اختر هذه الباقة</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="pricing-card popular">
+                        <div class="pricing-header">
+                            <h3>الباقة المميزة</h3>
+                            <div class="price">249 <span>ريال/شهرياً</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 4 جلسات فردية شهرياً</li>
+                            <li><i class="fas fa-check"></i> وصول غير محدود لمجموعات الدعم</li>
+                            <li><i class="fas fa-check"></i> ورشتا عمل شهرياً</li>
+                            <li><i class="fas fa-check"></i> وصول كامل للمكتبة الرقمية</li>
+                            <li><i class="fas fa-check"></i> متابعة أسبوعية مع الأخصائي</li>
+                            <li><i class="fas fa-times text-secondary"></i> جلسات طارئة</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">اختر هذه الباقة</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>الباقة الشاملة</h3>
+                            <div class="price">399 <span>ريال/شهرياً</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> جلسات فردية غير محدودة</li>
+                            <li><i class="fas fa-check"></i> وصول غير محدود لمجموعات الدعم</li>
+                            <li><i class="fas fa-check"></i> ورش عمل غير محدودة</li>
+                            <li><i class="fas fa-check"></i> وصول كامل للمكتبة الرقمية</li>
+                            <li><i class="fas fa-check"></i> متابعة يومية مع الأخصائي</li>
+                            <li><i class="fas fa-check"></i> جلسات طارئة متاحة</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary">اختر هذه الباقة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Contact Section ===== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>تواصل معنا</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="contact-info">
+                        <h3 class="mb-4">نسعد بتواصلك معنا</h3>
+                        <p class="mb-5">لديك استفسار أو ترغب في معرفة المزيد عن خدماتنا؟ فريق الدعم لدينا جاهز لمساعدتك في أي وقت.</p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>العنوان</h5>
+                                <p>الرياض، المملكة العربية السعودية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h5>الهاتف</h5>
+                                <p>+966 11 123 4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>البريد الإلكتروني</h5>
+                                <p>info@sand.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links mt-4">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="contact-form">
+                        <h3 class="mb-4">أرسل رسالتك</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="الاسم الكامل" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="البريد الإلكتروني" required>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control" placeholder="الموضوع">
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" rows="6" placeholder="رسالتك" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <a class="navbar-brand mb-4" href="#"><i class="fas fa-hands-helping"></i> تعافي</a>
+                        <p class="mb-4">منصة الدعم النفسي الأولى في العالم العربي، تهدف إلى جعل الرعاية النفسية متاحة للجميع في بيئة آمنة ومحترمة.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                        <h5>روابط سريعة</h5>
+                        <ul class="footer-links">
+                            <li><a href="#home">الرئيسية</a></li>
+                            <li><a href="#about">عن تعافي</a></li>
+                            <li><a href="#services">خدماتنا</a></li>
+                            <li><a href="#pricing">الباقات</a></li>
+                            <li><a href="#contact">اتصل بنا</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                        <h5>خدماتنا</h5>
+                        <ul class="footer-links">
+                            <li><a href="#">جلسات فردية</a></li>
+                            <li><a href="#">مجموعات الدعم</a></li>
+                            <li><a href="#">ورش العمل</a></li>
+                            <li><a href="#">المكتبة الرقمية</a></li>
+                            <li><a href="#">الاستشارات الطارئة</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-4">
+                        <h5>النشرة البريدية</h5>
+                        <p class="mb-3">اشترك في نشرتنا البريدية لتصلك أحدث المقالات والنصائح النفسية.</p>
+                        <form>
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" placeholder="بريدك الإلكتروني" required>
+                                <button class="btn btn-primary form-control" type="submit">اشتراك</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2025 تعافي. جميع الحقوق محفوظة. | <a href="#">سياسة الخصوصية</a> | <a href="#">شروط الاستخدام</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+    
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.testimonialSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                }
+            }
+        });
+        
+        // Counter animation for stats
+        const counters = document.querySelectorAll('.count');
+        const speed = 200;
+        
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCount();
+            });
+        };
+        
+        // Initialize counters when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
 </html>

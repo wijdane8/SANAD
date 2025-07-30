@@ -4,7 +4,7 @@ from . import views
 
 app_name="Website"
 urlpatterns=[
-    path("home/",views.home,name="home"),
+    path("",views.home,name="home"),
     path("create_group/",views.create_group,name="create_group"),
     path("spiecilest_list/",views.spiecilest_list,name="spiecilest_list"),
     path("search/",views.search,name="search"),
@@ -26,6 +26,21 @@ urlpatterns=[
     path("post/<post_id>/comment/new/", views.add_comment, name="add_comment"),
     path("group_detail/<group_id>/", views.group_detail, name="group_detail"),
     path("contact_us/", views.contact_us, name="contact_us"),
+    # Group management
+    path("my_groups/<int:specialist_id>/", views.my_groups, name="my_groups"),
+    path("new_group/", views.new_group, name="new_group"),
+    
+    # Post management
+    path("post/add/", views.add_post, name="add_post"),
+    path("post/list/", views.list_posts, name="list_posts"),
+    
+    # Workshop management
+    path("new_mission/<int:group_id>/", views.new_mission, name="new_mission"),
+    
+    # Member areas
+    path("my_group_list/", views.my_group_list, name="my_group_list"),
+    path("my_missions/", views.my_missions, name="my_missions"),
+    
     
     
 ]
