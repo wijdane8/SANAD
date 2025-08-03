@@ -1,6 +1,6 @@
-# Sanad – Psychological Support Platform
+# Healing – Psychological Support Platform
 
-**Sanad (سند)** is a web-based platform that offers structured psychological and behavioral support through interactive group sessions led by verified specialists. It aims to provide a safe and empowering environment for individuals seeking personal growth and emotional support.
+**Healing (تعافي)** is a web-based platform that offers structured psychological and behavioral support through interactive group sessions led by verified specialists. It aims to provide a safe and empowering environment for individuals seeking personal growth and emotional support.
 
 ---
 
@@ -69,7 +69,7 @@ View the UI prototype and wireframes:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/sanad-support.git
+git clone https://github.com/your-username/Healing-support.git
 
 # Navigate to the project directory
 cd Healing
